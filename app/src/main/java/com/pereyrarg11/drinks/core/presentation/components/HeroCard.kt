@@ -1,6 +1,5 @@
-package com.pereyrarg11.drinks.feature.home.presentation.components
+package com.pereyrarg11.drinks.core.presentation.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -15,47 +14,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun HeroCard(
     label: String,
     imageUrl: String,
-    onClickListener: () -> Unit,
     modifier: Modifier = Modifier,
-    isPreview: Boolean = LocalInspectionMode.current,
+    onClickListener: () -> Unit = {},
 ) {
     Card(modifier = modifier.clickable { onClickListener() }) {
         Box {
-            if (isPreview) {
-                Image(
-                    painter = painterResource(id = R.drawable.img_drink_placeholder),
-                    contentDescription = label,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .align(Alignment.Center),
-                    contentScale = ContentScale.Crop,
-                )
-            } else {
-                GlideImage(
-                    model = imageUrl,
-                    contentDescription = label,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .align(Alignment.Center),
-                    contentScale = ContentScale.Crop,
-                )
-            }
+            DefaultImage(
+                url = imageUrl,
+                contentDescription = label,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .align(Alignment.Center)
+            )
 
             Box(
                 modifier = Modifier
@@ -89,9 +69,8 @@ fun HeroCard(
 fun HeroCardPreview() {
     DrinksTheme {
         HeroCard(
-            label = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum aliquam lacus aliquam neque egestas, a gravida erat laoreet.",
+            label = "Lorem ipsum dolor sit amet",
             imageUrl = "https://www.thecocktaildb.com/images/media/drink/dztcv51598717861.jpg",
-            onClickListener = {},
         )
     }
 }
