@@ -2,10 +2,7 @@ package com.pereyrarg11.drinks.core.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val ApricotSour = Color(0xFFFFB84C)
+val DragonFruit = Color(0xFFF266AB)
+val Lean = Color(0xFFA459D1)
+val Grasshopper = Color(0xFF2CD3E1)
