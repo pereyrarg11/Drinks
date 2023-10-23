@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- core -->
+    <dimen name="size_xs">4dp</dimen>
+    <dimen name="size_sm">8dp</dimen>
+    <dimen name="size_md">16dp</dimen>
+    <dimen name="size_lg">24dp</dimen>
+    <dimen name="size_xl">32dp</dimen>
+</resources>
