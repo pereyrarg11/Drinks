@@ -6,4 +6,5 @@
     <dimen name="size_md">16dp</dimen>
     <dimen name="size_lg">24dp</dimen>
     <dimen name="size_xl">32dp</dimen>
+    <dimen name="size_xxl">40dp</dimen>
 </resources>
