@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.ui.theme
+package com.pereyrarg11.drinks.core.presentation.theme
 
 import android.app.Activity
 import android.os.Build
