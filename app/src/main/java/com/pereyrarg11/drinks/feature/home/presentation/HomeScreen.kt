@@ -12,16 +12,22 @@ import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.components.ScreenSlot
 import com.pereyrarg11.drinks.feature.home.domain.HomeUtils
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionModel
+import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType.ALCOHOL
+import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType.CATEGORIES
+import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType.UNKNOWN
 import com.pereyrarg11.drinks.feature.home.presentation.components.HeroRow
+import com.pereyrarg11.drinks.feature.home.presentation.components.HorizontalGrid
 
 private val sections = listOf(
     HomeSectionModel(
         "",
-        HomeUtils.getPreviewItems()
+        HomeUtils.getPreviewItems(),
+        type = ALCOHOL,
     ),
     HomeSectionModel(
         "Categories",
-        HomeUtils.getPreviewItems()
+        HomeUtils.getPreviewItems(),
+        type = CATEGORIES,
     ),
 )
 
@@ -40,7 +46,13 @@ fun HomeScreen(
                     top = if (index == 0) verticalSlotPadding else 0.dp
                 )
             ) {
-                HeroRow(models = section.filters)
+                when (section.type) {
+                    ALCOHOL -> HeroRow(models = section.filters)
+                    CATEGORIES -> HorizontalGrid(models = section.filters)
+                    UNKNOWN -> {
+                        // TODO: this case could be recorded by Crashlytics/Error logger
+                    }
+                }
             }
         }
     }
