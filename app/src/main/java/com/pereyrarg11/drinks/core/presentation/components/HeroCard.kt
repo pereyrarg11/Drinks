@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.feature.home.presentation.components
+package com.pereyrarg11.drinks.core.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -37,8 +37,9 @@ fun HeroCard(
 ) {
     Card(modifier = modifier.clickable { onClickListener() }) {
         Box {
-            if (isPreview) {
+            if (isPreview || imageUrl.isBlank()) {
                 Image(
+                    // TODO: ge a better placeholder
                     painter = painterResource(id = R.drawable.img_drink_placeholder),
                     contentDescription = label,
                     modifier = Modifier
@@ -89,7 +90,7 @@ fun HeroCard(
 fun HeroCardPreview() {
     DrinksTheme {
         HeroCard(
-            label = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum aliquam lacus aliquam neque egestas, a gravida erat laoreet.",
+            label = "Lorem ipsum dolor sit amet",
             imageUrl = "https://www.thecocktaildb.com/images/media/drink/dztcv51598717861.jpg",
         )
     }
