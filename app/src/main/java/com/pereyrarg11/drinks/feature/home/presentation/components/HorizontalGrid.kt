@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.components.HorizontalCard
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
+import com.pereyrarg11.drinks.feature.home.domain.HomeUtils
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 
 @Composable
@@ -54,40 +55,7 @@ fun HorizontalGrid(
 fun HorizontalGridPreview() {
     DrinksTheme {
         HorizontalGrid(
-            models = listOf(
-                HomeFilterModel(
-                    "Alcoholic",
-                    "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"
-                ),
-                HomeFilterModel(
-                    "Non Alcoholic",
-                    "https://www.thecocktaildb.com/images/media/drink/xwqvur1468876473.jpg"
-                ),
-                HomeFilterModel(
-                    "Optional",
-                    "https://www.thecocktaildb.com/images/media/drink/vuxwvt1468875418.jpg"
-                ),
-                HomeFilterModel(
-                    "Cocktail",
-                    "https://www.thecocktaildb.com/images/media/drink/rptuxy1472669372.jpg"
-                ),
-                HomeFilterModel(
-                    "Shake",
-                    "https://www.thecocktaildb.com/images/media/drink/uvypss1472720581.jpg"
-                ),
-                HomeFilterModel(
-                    "Shot",
-                    "https://www.thecocktaildb.com/images/media/drink/rtpxqw1468877562.jpg"
-                ),
-                HomeFilterModel(
-                    "Beer",
-                    "https://www.thecocktaildb.com/images/media/drink/rwpswp1454511017.jpg"
-                ),
-                HomeFilterModel(
-                    "Coffee / Tea",
-                    "https://www.thecocktaildb.com/images/media/drink/vqwptt1441247711.jpg"
-                ),
-            )
+            models = HomeUtils.getPreviewItems()
         )
     }
 }

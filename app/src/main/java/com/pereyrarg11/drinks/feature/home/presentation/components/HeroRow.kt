@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.components.HeroCard
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
+import com.pereyrarg11.drinks.feature.home.domain.HomeUtils
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 
 @Composable
@@ -44,28 +45,7 @@ fun HeroRow(
 fun HeroRowPreview() {
     DrinksTheme {
         HeroRow(
-            models = listOf(
-                HomeFilterModel(
-                    "Alcoholic",
-                    "https://www.thecocktaildb.com/images/media/drink/xxyywq1454511117.jpg"
-                ),
-                HomeFilterModel(
-                    "Beer",
-                    "https://www.thecocktaildb.com/images/media/drink/rwpswp1454511017.jpg"
-                ),
-                HomeFilterModel(
-                    "Coffee",
-                    "https://www.thecocktaildb.com/images/media/drink/vqwptt1441247711.jpg"
-                ),
-                HomeFilterModel(
-                    "Ron",
-                    "https://www.thecocktaildb.com/images/media/drink/i9suxb1582474926.jpg"
-                ),
-                HomeFilterModel(
-                    "Non alcoholic",
-                    "https://www.thecocktaildb.com/images/media/drink/qyqtpv1468876144.jpg"
-                ),
-            )
+            models = HomeUtils.getPreviewItems()
         )
     }
 }
