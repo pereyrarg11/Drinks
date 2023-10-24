@@ -1,6 +1,5 @@
 package com.pereyrarg11.drinks.core.presentation.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -15,48 +14,28 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import com.bumptech.glide.integration.compose.ExperimentalGlideComposeApi
-import com.bumptech.glide.integration.compose.GlideImage
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 
-@OptIn(ExperimentalGlideComposeApi::class)
 @Composable
 fun HeroCard(
     label: String,
     imageUrl: String,
     modifier: Modifier = Modifier,
     onClickListener: () -> Unit = {},
-    isPreview: Boolean = LocalInspectionMode.current,
 ) {
     Card(modifier = modifier.clickable { onClickListener() }) {
         Box {
-            if (isPreview || imageUrl.isBlank()) {
-                Image(
-                    // TODO: ge a better placeholder
-                    painter = painterResource(id = R.drawable.img_drink_placeholder),
-                    contentDescription = label,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .align(Alignment.Center),
-                    contentScale = ContentScale.Crop,
-                )
-            } else {
-                GlideImage(
-                    model = imageUrl,
-                    contentDescription = label,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .align(Alignment.Center),
-                    contentScale = ContentScale.Crop,
-                )
-            }
+            DefaultImage(
+                url = imageUrl,
+                contentDescription = label,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .align(Alignment.Center)
+            )
 
             Box(
                 modifier = Modifier
