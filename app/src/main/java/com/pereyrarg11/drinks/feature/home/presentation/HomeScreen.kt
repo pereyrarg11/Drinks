@@ -14,7 +14,9 @@ import com.pereyrarg11.drinks.feature.home.domain.HomeUtils
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionModel
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType.ALCOHOL
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType.CATEGORIES
+import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType.INGREDIENTS
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType.UNKNOWN
+import com.pereyrarg11.drinks.feature.home.presentation.components.CircleRow
 import com.pereyrarg11.drinks.feature.home.presentation.components.HeroRow
 import com.pereyrarg11.drinks.feature.home.presentation.components.HorizontalGrid
 
@@ -28,6 +30,11 @@ private val sections = listOf(
         "Categories",
         HomeUtils.getPreviewItems(),
         type = CATEGORIES,
+    ),
+    HomeSectionModel(
+        label = "Ingredients",
+        filters = HomeUtils.getPreviewItems().filter { it.type.equals(INGREDIENTS) },
+        type = INGREDIENTS,
     ),
 )
 
@@ -49,6 +56,7 @@ fun HomeScreen(
                 when (section.type) {
                     ALCOHOL -> HeroRow(models = section.filters)
                     CATEGORIES -> HorizontalGrid(models = section.filters)
+                    INGREDIENTS -> CircleRow(models = section.filters)
                     UNKNOWN -> {
                         // TODO: this case could be recorded by Crashlytics/Error logger
                     }
