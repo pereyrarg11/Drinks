@@ -46,7 +46,6 @@ fun HomeScreenSlotPreview() {
             HeroCard(
                 label = "Strawberry Margarita",
                 imageUrl = "https://www.thecocktaildb.com/images/media/drink/tqyrpw1439905311.jpg",
-                onClickListener = {}
             )
         }
     }

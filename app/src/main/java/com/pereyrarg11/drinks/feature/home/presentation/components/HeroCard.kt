@@ -31,8 +31,8 @@ import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 fun HeroCard(
     label: String,
     imageUrl: String,
-    onClickListener: () -> Unit,
     modifier: Modifier = Modifier,
+    onClickListener: () -> Unit = {},
     isPreview: Boolean = LocalInspectionMode.current,
 ) {
     Card(modifier = modifier.clickable { onClickListener() }) {
@@ -91,7 +91,6 @@ fun HeroCardPreview() {
         HeroCard(
             label = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum aliquam lacus aliquam neque egestas, a gravida erat laoreet.",
             imageUrl = "https://www.thecocktaildb.com/images/media/drink/dztcv51598717861.jpg",
-            onClickListener = {},
         )
     }
 }
