@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.feature.home.presentation.components
+package com.pereyrarg11.drinks.core.presentation.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -11,9 +11,11 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
+import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
+import com.pereyrarg11.drinks.feature.home.presentation.components.HeroRow
 
 @Composable
-fun HomeScreenSlot(
+fun ScreenSlot(
     label: String,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
@@ -38,14 +40,26 @@ fun HomeScreenSlot(
 
 @Preview
 @Composable
-fun HomeScreenSlotPreview() {
+fun ScreenSlotPreview() {
     DrinksTheme {
-        HomeScreenSlot(
-            label = "Tipos de bebidas"
+        ScreenSlot(
+            label = "Filters"
         ) {
-            HeroCard(
-                label = "Strawberry Margarita",
-                imageUrl = "https://www.thecocktaildb.com/images/media/drink/tqyrpw1439905311.jpg",
+            HeroRow(
+                models = listOf(
+                    HomeFilterModel(
+                        "Alcoholic",
+                        "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"
+                    ),
+                    HomeFilterModel(
+                        "Non Alcoholic",
+                        "https://www.thecocktaildb.com/images/media/drink/xwqvur1468876473.jpg"
+                    ),
+                    HomeFilterModel(
+                        "Optional",
+                        "https://www.thecocktaildb.com/images/media/drink/vuxwvt1468875418.jpg"
+                    ),
+                )
             )
         }
     }
