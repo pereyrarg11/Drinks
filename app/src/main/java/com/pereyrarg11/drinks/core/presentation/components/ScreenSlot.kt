@@ -46,7 +46,7 @@ fun ScreenSlotPreview() {
             label = "Filters"
         ) {
             HeroRow(
-                models = HomeUtils.getPreviewItems(),
+                models = HomeUtils.getDefaultFilters(),
             )
         }
     }

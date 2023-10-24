@@ -42,6 +42,6 @@ fun CircleRow(
 @Composable
 fun CircleRowPreview() {
     DrinksTheme {
-        CircleRow(models = HomeUtils.getPreviewItems())
+        CircleRow(models = HomeUtils.getDefaultFilters())
     }
 }

@@ -45,7 +45,7 @@ fun HeroRow(
 fun HeroRowPreview() {
     DrinksTheme {
         HeroRow(
-            models = HomeUtils.getPreviewItems()
+            models = HomeUtils.getDefaultFilters()
         )
     }
 }

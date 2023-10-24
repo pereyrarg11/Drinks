@@ -73,7 +73,7 @@ fun CircleCard(
 @Composable
 fun CircleCardPreview() {
     DrinksTheme {
-        val model = HomeUtils.getPreviewItems().random()
+        val model = HomeUtils.getDefaultFilters().random()
         CircleCard(
             label = model.label,
             imageUrl = model.imageUrl,

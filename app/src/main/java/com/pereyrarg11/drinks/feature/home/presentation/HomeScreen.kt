@@ -23,17 +23,17 @@ import com.pereyrarg11.drinks.feature.home.presentation.components.HorizontalGri
 private val sections = listOf(
     HomeSectionModel(
         "",
-        HomeUtils.getPreviewItems(),
+        HomeUtils.getDefaultFilters(),
         type = ALCOHOL,
     ),
     HomeSectionModel(
         "Categories",
-        HomeUtils.getPreviewItems(),
+        HomeUtils.getDefaultFilters(),
         type = CATEGORIES,
     ),
     HomeSectionModel(
         label = "Ingredients",
-        filters = HomeUtils.getPreviewItems().filter { it.type.equals(INGREDIENTS) },
+        filters = HomeUtils.getDefaultFilters().filter { it.type.equals(INGREDIENTS) },
         type = INGREDIENTS,
     ),
 )

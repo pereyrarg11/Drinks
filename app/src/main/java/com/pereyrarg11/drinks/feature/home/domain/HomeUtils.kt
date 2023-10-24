@@ -1,40 +1,99 @@
 package com.pereyrarg11.drinks.feature.home.domain
 
+import com.pereyrarg11.drinks.core.domain.model.FilterType
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 
 object HomeUtils {
-    fun getPreviewItems(): List<HomeFilterModel> = listOf(
+    fun getDefaultFilters(): List<HomeFilterModel> = listOf(
         HomeFilterModel(
-            "Alcoholic",
-            "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"
+            label = "Alcoholic",
+            imageUrl = "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
+            type = FilterType.ALCOHOL,
         ),
         HomeFilterModel(
-            "Non Alcoholic",
-            "https://www.thecocktaildb.com/images/media/drink/xwqvur1468876473.jpg"
+            label = "Non Alcoholic",
+            imageUrl = "https://www.thecocktaildb.com/images/media/drink/xwqvur1468876473.jpg",
+            type = FilterType.ALCOHOL,
         ),
         HomeFilterModel(
-            "Optional Alcohol",
-            "https://www.thecocktaildb.com/images/media/drink/vuxwvt1468875418.jpg"
+            label = "Optional Alcohol",
+            imageUrl = "https://www.thecocktaildb.com/images/media/drink/vuxwvt1468875418.jpg",
+            type = FilterType.ALCOHOL,
         ),
         HomeFilterModel(
-            "Cocktail",
-            "https://www.thecocktaildb.com/images/media/drink/rptuxy1472669372.jpg"
+            label = "Cocktail",
+            imageUrl = "https://www.thecocktaildb.com/images/media/drink/rptuxy1472669372.jpg",
+            type = FilterType.CATEGORY,
         ),
         HomeFilterModel(
-            "Shake",
-            "https://www.thecocktaildb.com/images/media/drink/uvypss1472720581.jpg"
+            label = "Shake",
+            imageUrl = "https://www.thecocktaildb.com/images/media/drink/uvypss1472720581.jpg",
+            type = FilterType.CATEGORY,
         ),
         HomeFilterModel(
-            "Shot",
-            "https://www.thecocktaildb.com/images/media/drink/rtpxqw1468877562.jpg"
+            label = "Shot",
+            imageUrl = "https://www.thecocktaildb.com/images/media/drink/rtpxqw1468877562.jpg",
+            type = FilterType.CATEGORY,
         ),
         HomeFilterModel(
-            "Beer",
-            "https://www.thecocktaildb.com/images/media/drink/rwpswp1454511017.jpg"
+            label = "Beer",
+            imageUrl = "https://www.thecocktaildb.com/images/media/drink/rwpswp1454511017.jpg",
+            type = FilterType.CATEGORY,
         ),
         HomeFilterModel(
-            "Coffee / Tea",
-            "https://www.thecocktaildb.com/images/media/drink/vqwptt1441247711.jpg"
+            label = "Coffee & Tea",
+            imageUrl = "https://www.thecocktaildb.com/images/media/drink/vqwptt1441247711.jpg",
+            type = FilterType.CATEGORY,
+        ),
+        HomeFilterModel(
+            label = "Gin",
+            imageUrl = "https://www.thecocktaildb.com/images/ingredients/gin.png",
+            type = FilterType.INGREDIENT,
+        ),
+        HomeFilterModel(
+            label = "Scotch",
+            imageUrl = "https://www.thecocktaildb.com/images/ingredients/scotch.png",
+            type = FilterType.INGREDIENT,
+        ),
+        HomeFilterModel(
+            label = "Brandy",
+            imageUrl = "https://www.thecocktaildb.com/images/ingredients/brandy.png",
+            type = FilterType.INGREDIENT,
+        ),
+        HomeFilterModel(
+            label = "Champagne",
+            imageUrl = "https://www.thecocktaildb.com/images/ingredients/champagne.png",
+            type = FilterType.INGREDIENT,
+        ),
+        HomeFilterModel(
+            label = "Tequila",
+            imageUrl = "https://www.thecocktaildb.com/images/ingredients/tequila.png",
+            type = FilterType.INGREDIENT,
+        ),
+        HomeFilterModel(
+            label = "Vodka",
+            imageUrl = "https://www.thecocktaildb.com/images/ingredients/vodka.png",
+            type = FilterType.INGREDIENT,
+        ),
+        HomeFilterModel(
+            label = "Kahlua",
+            imageUrl = "https://www.thecocktaildb.com/images/ingredients/kahlua.png",
+            type = FilterType.INGREDIENT,
+        ),
+        HomeFilterModel(
+            label = "Whiskey",
+            imageUrl = "https://www.thecocktaildb.com/images/ingredients/whiskey.png",
+            type = FilterType.INGREDIENT,
+        ),
+        HomeFilterModel(
+            label = "Cognac",
+            imageUrl = "https://www.thecocktaildb.com/images/ingredients/cognac-Small.png",
+            type = FilterType.INGREDIENT,
+        ),
+        HomeFilterModel(
+            label = "Pisco",
+            imageUrl = "https://www.thecocktaildb.com/images/ingredients/pisco.png",
+            type = FilterType.INGREDIENT,
         ),
     )
 }

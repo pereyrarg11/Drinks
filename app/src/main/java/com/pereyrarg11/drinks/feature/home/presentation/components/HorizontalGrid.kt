@@ -55,7 +55,7 @@ fun HorizontalGrid(
 fun HorizontalGridPreview() {
     DrinksTheme {
         HorizontalGrid(
-            models = HomeUtils.getPreviewItems()
+            models = HomeUtils.getDefaultFilters()
         )
     }
 }
