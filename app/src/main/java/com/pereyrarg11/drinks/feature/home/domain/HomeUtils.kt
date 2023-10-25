@@ -2,6 +2,8 @@ package com.pereyrarg11.drinks.feature.home.domain
 
 import com.pereyrarg11.drinks.core.domain.model.FilterType
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
+import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionModel
+import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType
 
 object HomeUtils {
     fun getDefaultFilters(): List<HomeFilterModel> = listOf(
@@ -94,6 +96,24 @@ object HomeUtils {
             label = "Pisco",
             imageUrl = "https://www.thecocktaildb.com/images/ingredients/pisco.png",
             type = FilterType.INGREDIENT,
+        ),
+    )
+
+    fun getDefaultSections(): List<HomeSectionModel> =listOf(
+        HomeSectionModel(
+            label = "",
+            filters = HomeUtils.getDefaultFilters().filter { it.type == FilterType.ALCOHOL },
+            type = HomeSectionType.ALCOHOL,
+        ),
+        HomeSectionModel(
+            label = "Categories",
+            filters = HomeUtils.getDefaultFilters().filter { it.type == FilterType.CATEGORY },
+            type = HomeSectionType.CATEGORIES,
+        ),
+        HomeSectionModel(
+            label = "Ingredients",
+            filters = HomeUtils.getDefaultFilters().filter { it.type == FilterType.INGREDIENT },
+            type = HomeSectionType.INGREDIENTS,
         ),
     )
 }
