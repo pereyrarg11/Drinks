@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bebidas</string>
+    <string name="error_default">Ocurrió un error. Intente más tarde.</string>
+    <string name="message_loading">Cargando</string>
+</resources>
