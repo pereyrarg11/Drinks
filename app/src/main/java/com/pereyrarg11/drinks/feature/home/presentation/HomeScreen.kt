@@ -2,6 +2,7 @@ package com.pereyrarg11.drinks.feature.home.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.pereyrarg11.drinks.core.presentation.ErrorScreen
 import com.pereyrarg11.drinks.core.presentation.LoadingScreen
 import com.pereyrarg11.drinks.core.presentation.MainScreen
@@ -9,7 +10,7 @@ import com.pereyrarg11.drinks.core.presentation.MainScreen
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    viewModel: HomeViewModel = HomeViewModel(),
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
     MainScreen(
         modifier = modifier,

@@ -8,12 +8,15 @@ import androidx.lifecycle.viewModelScope
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.domain.util.DataResult
 import com.pereyrarg11.drinks.core.presentation.util.UiText
-import com.pereyrarg11.drinks.feature.home.data.repository.HomeRepositoryImpl
 import com.pereyrarg11.drinks.feature.home.domain.repository.HomeRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
-    private val repository: HomeRepository = HomeRepositoryImpl()
+@HiltViewModel
+class HomeViewModel @Inject constructor(
+    private val repository: HomeRepository,
+) : ViewModel() {
 
     var state by mutableStateOf(HomeState())
 
