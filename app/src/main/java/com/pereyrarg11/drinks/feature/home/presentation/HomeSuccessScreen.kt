@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.components.ScreenSlot
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
-import com.pereyrarg11.drinks.feature.home.domain.HomeUtils
+import com.pereyrarg11.drinks.feature.home.data.repository.StaticHomeProvider
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionModel
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType
@@ -69,6 +69,6 @@ fun HomeSuccessScreen(
 @Composable
 fun HomeSuccessScreenPreview() {
     DrinksTheme {
-        HomeSuccessScreen(sections = HomeUtils.getDefaultSections())
+        HomeSuccessScreen(sections = StaticHomeProvider.getAllSections())
     }
 }

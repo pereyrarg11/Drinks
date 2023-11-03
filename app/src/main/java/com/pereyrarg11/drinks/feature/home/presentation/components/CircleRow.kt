@@ -11,7 +11,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.components.CircleCard
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
-import com.pereyrarg11.drinks.feature.home.domain.HomeUtils
+import com.pereyrarg11.drinks.feature.home.data.repository.StaticHomeProvider
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 
 @Composable
@@ -42,6 +42,6 @@ fun CircleRow(
 @Composable
 fun CircleRowPreview() {
     DrinksTheme {
-        CircleRow(models = HomeUtils.getDefaultFilters())
+        CircleRow(models = StaticHomeProvider.getIngredientFilters())
     }
 }

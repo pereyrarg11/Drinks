@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
-import com.pereyrarg11.drinks.feature.home.domain.HomeUtils
+import com.pereyrarg11.drinks.feature.home.data.repository.StaticHomeProvider
 
 @Composable
 fun CircleCard(
@@ -73,7 +73,7 @@ fun CircleCard(
 @Composable
 fun CircleCardPreview() {
     DrinksTheme {
-        val model = HomeUtils.getDefaultFilters().random()
+        val model = StaticHomeProvider.getIngredientFilters().random()
         CircleCard(
             label = model.label,
             imageUrl = model.imageUrl,

@@ -11,8 +11,8 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
-import com.pereyrarg11.drinks.feature.home.domain.HomeUtils
-import com.pereyrarg11.drinks.feature.home.presentation.components.HeroRow
+import com.pereyrarg11.drinks.feature.home.data.repository.StaticHomeProvider
+import com.pereyrarg11.drinks.feature.home.presentation.components.HorizontalGrid
 
 @Composable
 fun ScreenSlot(
@@ -45,9 +45,7 @@ fun ScreenSlotPreview() {
         ScreenSlot(
             label = "Filters"
         ) {
-            HeroRow(
-                models = HomeUtils.getDefaultFilters(),
-            )
+            HorizontalGrid(models = StaticHomeProvider.getCategoryFilters())
         }
     }
 }

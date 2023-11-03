@@ -106,23 +106,23 @@ object StaticHomeProvider {
     private fun getFiltersByType(filter: FilterType): List<HomeFilterModel> =
         getAllFilters().filter { it.type == filter }
 
-    fun getSection(type: HomeSectionType): HomeSectionModel {
+    private fun getSection(type: HomeSectionType): HomeSectionModel {
         return when (type) {
             HomeSectionType.ALCOHOL -> HomeSectionModel(
                 label = "",
-                filters = getFiltersByType(FilterType.ALCOHOL),
+                filters = getAlcoholFilters(),
                 type
             )
 
             HomeSectionType.CATEGORIES -> HomeSectionModel(
                 label = "Categories",
-                filters = getFiltersByType(FilterType.CATEGORY),
+                filters = getCategoryFilters(),
                 type
             )
 
             HomeSectionType.INGREDIENTS -> HomeSectionModel(
                 label = "Ingredients",
-                filters = getFiltersByType(FilterType.INGREDIENT),
+                filters = getIngredientFilters(),
                 type
             )
 
@@ -135,8 +135,20 @@ object StaticHomeProvider {
     }
 
     fun getAllSections(): List<HomeSectionModel> = listOf(
-        getSection(HomeSectionType.ALCOHOL),
-        getSection(HomeSectionType.CATEGORIES),
-        getSection(HomeSectionType.INGREDIENTS),
+        getAlcoholSection(),
+        getCategoriesSection(),
+        getIngredientsSection(),
     )
+
+    fun getAlcoholFilters(): List<HomeFilterModel> = getFiltersByType(FilterType.ALCOHOL)
+
+    fun getCategoryFilters(): List<HomeFilterModel> = getFiltersByType(FilterType.CATEGORY)
+
+    fun getIngredientFilters(): List<HomeFilterModel> = getFiltersByType(FilterType.INGREDIENT)
+
+    fun getAlcoholSection(): HomeSectionModel = getSection(HomeSectionType.ALCOHOL)
+
+    fun getCategoriesSection(): HomeSectionModel = getSection(HomeSectionType.CATEGORIES)
+
+    fun getIngredientsSection(): HomeSectionModel = getSection(HomeSectionType.INGREDIENTS)
 }

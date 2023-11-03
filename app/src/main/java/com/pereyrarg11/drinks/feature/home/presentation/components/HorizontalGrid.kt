@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.components.HorizontalCard
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
-import com.pereyrarg11.drinks.feature.home.domain.HomeUtils
+import com.pereyrarg11.drinks.feature.home.data.repository.StaticHomeProvider
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 
 @Composable
@@ -55,7 +55,7 @@ fun HorizontalGrid(
 fun HorizontalGridPreview() {
     DrinksTheme {
         HorizontalGrid(
-            models = HomeUtils.getDefaultFilters()
+            models = StaticHomeProvider.getCategoryFilters()
         )
     }
 }
