@@ -23,11 +23,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
-import com.pereyrarg11.drinks.feature.home.data.repository.StaticHomeProvider
+import com.pereyrarg11.drinks.core.presentation.util.UiText
 
 @Composable
 fun CircleCard(
-    label: String,
+    label: UiText,
     imageUrl: String,
     modifier: Modifier = Modifier,
     imageSize: Dp = dimensionResource(id = R.dimen.circle_card_image_size),
@@ -41,7 +41,7 @@ fun CircleCard(
 
         DefaultImage(
             url = imageUrl,
-            contentDescription = label,
+            contentDescription = label.asString(),
             modifier = Modifier
                 .size(imageSize)
                 .clickable { onClickListener() }
@@ -54,7 +54,7 @@ fun CircleCard(
         )
 
         Text(
-            text = label,
+            text = label.asString(),
             modifier = Modifier
                 .fillMaxWidth()
                 .paddingFromBaseline(
@@ -73,10 +73,9 @@ fun CircleCard(
 @Composable
 fun CircleCardPreview() {
     DrinksTheme {
-        val model = StaticHomeProvider.getIngredientFilters().random()
         CircleCard(
-            label = model.label,
-            imageUrl = model.imageUrl,
+            label = UiText.PlainText("Tequila"),
+            imageUrl = "https://www.thecocktaildb.com/images/ingredients/tequila.png",
         )
     }
 }

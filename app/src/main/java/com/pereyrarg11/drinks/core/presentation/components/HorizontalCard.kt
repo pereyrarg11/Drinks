@@ -20,10 +20,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
+import com.pereyrarg11.drinks.core.presentation.util.UiText
 
 @Composable
 fun HorizontalCard(
-    label: String,
+    label: UiText,
     imageUrl: String,
     modifier: Modifier = Modifier,
     height: Dp = dimensionResource(id = R.dimen.horizontal_card_height),
@@ -40,12 +41,12 @@ fun HorizontalCard(
         ) {
             DefaultImage(
                 url = imageUrl,
-                contentDescription = label,
+                contentDescription = label.asString(),
                 modifier = Modifier.size(height),
             )
 
             Text(
-                text = label,
+                text = label.asString(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = dimensionResource(id = R.dimen.size_md)),
@@ -62,7 +63,7 @@ fun HorizontalCard(
 fun HorizontalCardPreview() {
     DrinksTheme {
         HorizontalCard(
-            label = "Cocktail",
+            label = UiText.PlainText("Cocktail"),
             imageUrl = "https://www.thecocktaildb.com/images/media/drink/yqvvqs1475667388.jpg",
         )
     }

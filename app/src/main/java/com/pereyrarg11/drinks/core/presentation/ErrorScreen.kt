@@ -14,16 +14,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
+import com.pereyrarg11.drinks.core.presentation.util.UiText
 
 @Composable
 fun ErrorScreen(
     modifier: Modifier = Modifier,
-    message: String = stringResource(R.string.error_default),
+    message: UiText = UiText.StringResource(R.string.error_default),
 ) {
     Box(
         modifier = modifier.fillMaxSize(),
@@ -34,11 +34,11 @@ fun ErrorScreen(
         ) {
             Icon(
                 imageVector = Icons.Default.Build,
-                contentDescription = message,
+                contentDescription = message.asString(),
                 modifier = Modifier.size(48.dp)
             )
             Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.size_lg)))
-            Text(text = message)
+            Text(text = message.asString())
         }
     }
 }

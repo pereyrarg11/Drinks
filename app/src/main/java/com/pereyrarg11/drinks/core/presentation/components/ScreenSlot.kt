@@ -11,19 +11,20 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
+import com.pereyrarg11.drinks.core.presentation.util.UiText
 import com.pereyrarg11.drinks.feature.home.data.repository.StaticHomeProvider
 import com.pereyrarg11.drinks.feature.home.presentation.components.HorizontalGrid
 
 @Composable
 fun ScreenSlot(
-    label: String,
+    label: UiText,
     modifier: Modifier = Modifier,
     content: @Composable () -> Unit,
 ) {
     Column(modifier = modifier) {
-        if (label.isNotBlank()) {
+        if (label.asString().isNotBlank()) {
             Text(
-                text = label,
+                text = label.asString(),
                 modifier = Modifier
                     .padding(horizontal = dimensionResource(id = R.dimen.size_md))
                     .paddingFromBaseline(
@@ -43,7 +44,7 @@ fun ScreenSlot(
 fun ScreenSlotPreview() {
     DrinksTheme {
         ScreenSlot(
-            label = "Filters"
+            label = UiText.PlainText("Filters")
         ) {
             HorizontalGrid(models = StaticHomeProvider.getCategoryFilters())
         }

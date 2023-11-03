@@ -22,7 +22,7 @@ import com.pereyrarg11.drinks.feature.home.presentation.components.HeroRow
 import com.pereyrarg11.drinks.feature.home.presentation.components.HorizontalGrid
 
 private fun handleNavigation(model: HomeFilterModel) {
-    Log.i("HomeSuccessScreen", "label:${model.label} query:${model.type.queryParam}=${model.queryValue}")
+    Log.i("HomeSuccessScreen", "query:${model.type.queryParam}=${model.queryValue}")
 }
 
 @Composable

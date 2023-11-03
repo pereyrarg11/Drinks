@@ -19,10 +19,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
+import com.pereyrarg11.drinks.core.presentation.util.UiText
 
 @Composable
 fun HeroCard(
-    label: String,
+    label: UiText,
     imageUrl: String,
     modifier: Modifier = Modifier,
     onClickListener: () -> Unit = {},
@@ -31,7 +32,7 @@ fun HeroCard(
         Box {
             DefaultImage(
                 url = imageUrl,
-                contentDescription = label,
+                contentDescription = label.asString(),
                 modifier = Modifier
                     .fillMaxSize()
                     .align(Alignment.Center)
@@ -49,7 +50,7 @@ fun HeroCard(
                     )
             ) {
                 Text(
-                    text = label,
+                    text = label.asString(),
                     modifier = Modifier
                         .align(Alignment.BottomStart)
                         .fillMaxWidth()
@@ -69,7 +70,7 @@ fun HeroCard(
 fun HeroCardPreview() {
     DrinksTheme {
         HeroCard(
-            label = "Lorem ipsum dolor sit amet",
+            label = UiText.PlainText("Alcoholic"),
             imageUrl = "https://www.thecocktaildb.com/images/media/drink/dztcv51598717861.jpg",
         )
     }

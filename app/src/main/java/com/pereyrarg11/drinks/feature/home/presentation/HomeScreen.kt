@@ -18,7 +18,7 @@ fun HomeScreen(
         val state = viewModel.state
 
         when {
-            state.hasError -> ErrorScreen(message = state.errorMessage.asString())
+            state.hasError -> ErrorScreen(message = state.errorMessage)
             !state.isLoading && !state.hasError -> HomeSuccessScreen(sections = state.sections)
             else -> LoadingScreen()
         }
