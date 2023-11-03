@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bebidas</string>
+    <string name="error_default">Ocurrió un error. Intente más tarde.</string>
+    <string name="message_loading">Cargando</string>
+    <string name="title_ingredients">Ingredientes</string>
+    <string name="title_categories">Categorías</string>
+    <string name="title_alcoholic">Alcoholicas</string>
+    <string name="title_non_alcoholic">Sin Alcohol</string>
+    <string name="title_optional_alcohol">A elegir</string>
+    <string name="title_cocktail">Cocktel</string>
+    <string name="title_shake">Batido</string>
+    <string name="title_beer">Cerveza</string>
+    <string name="title_coffee_tea">Café / Té</string>
+    <string name="title_gin">Ginebra</string>
+    <string name="title_scotch">Escocés</string>
+    <string name="title_champagne">Champaña</string>
+</resources>

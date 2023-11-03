@@ -20,19 +20,21 @@ private val DarkColorScheme = darkColorScheme(
     primary = ApricotSour,
     secondary = DragonFruit,
     tertiary = Grasshopper,
+    surfaceVariant = DragonFruit,// for cards
 )
 
 private val LightColorScheme = lightColorScheme(
     primary = ApricotSour,
     secondary = DragonFruit,
     tertiary = Grasshopper,
+    surfaceVariant = DragonFruit,// for cards
 )
 
 @Composable
 fun DrinksTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
