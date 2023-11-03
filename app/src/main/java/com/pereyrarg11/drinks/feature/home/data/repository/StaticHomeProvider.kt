@@ -1,13 +1,16 @@
-package com.pereyrarg11.drinks.feature.home.domain
+package com.pereyrarg11.drinks.feature.home.data.repository
 
 import com.pereyrarg11.drinks.core.domain.model.FilterType
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionModel
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType
 
-@Deprecated(message = "This data is no longer maintained.")
-object HomeUtils {
-    fun getDefaultFilters(): List<HomeFilterModel> = listOf(
+/**
+ * Static data to be shown in HomeScreen.
+ * Useful for preview mode and first app version.
+ */
+object StaticHomeProvider {
+    private fun getAllFilters(): List<HomeFilterModel> = listOf(
         HomeFilterModel(
             label = "Alcoholic",
             imageUrl = "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
@@ -100,21 +103,40 @@ object HomeUtils {
         ),
     )
 
-    fun getDefaultSections(): List<HomeSectionModel> =listOf(
-        HomeSectionModel(
-            label = "",
-            filters = HomeUtils.getDefaultFilters().filter { it.type == FilterType.ALCOHOL },
-            type = HomeSectionType.ALCOHOL,
-        ),
-        HomeSectionModel(
-            label = "Categories",
-            filters = HomeUtils.getDefaultFilters().filter { it.type == FilterType.CATEGORY },
-            type = HomeSectionType.CATEGORIES,
-        ),
-        HomeSectionModel(
-            label = "Ingredients",
-            filters = HomeUtils.getDefaultFilters().filter { it.type == FilterType.INGREDIENT },
-            type = HomeSectionType.INGREDIENTS,
-        ),
+    private fun getFiltersByType(filter: FilterType): List<HomeFilterModel> =
+        getAllFilters().filter { it.type == filter }
+
+    fun getSection(type: HomeSectionType): HomeSectionModel {
+        return when (type) {
+            HomeSectionType.ALCOHOL -> HomeSectionModel(
+                label = "",
+                filters = getFiltersByType(FilterType.ALCOHOL),
+                type
+            )
+
+            HomeSectionType.CATEGORIES -> HomeSectionModel(
+                label = "Categories",
+                filters = getFiltersByType(FilterType.CATEGORY),
+                type
+            )
+
+            HomeSectionType.INGREDIENTS -> HomeSectionModel(
+                label = "Ingredients",
+                filters = getFiltersByType(FilterType.INGREDIENT),
+                type
+            )
+
+            HomeSectionType.UNKNOWN -> HomeSectionModel(
+                label = "",
+                filters = emptyList(),
+                type
+            )
+        }
+    }
+
+    fun getAllSections(): List<HomeSectionModel> = listOf(
+        getSection(HomeSectionType.ALCOHOL),
+        getSection(HomeSectionType.CATEGORIES),
+        getSection(HomeSectionType.INGREDIENTS),
     )
 }
