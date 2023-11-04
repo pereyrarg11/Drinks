@@ -21,6 +21,7 @@ import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 import com.pereyrarg11.drinks.core.presentation.util.UiText
 
+// TODO: use Displayable insteadof label and imageUrl
 @Composable
 fun HeroCard(
     label: UiText,
