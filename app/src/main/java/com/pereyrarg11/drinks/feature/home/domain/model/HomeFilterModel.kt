@@ -7,5 +7,5 @@ data class HomeFilterModel(
     val label: UiText = UiText.PlainText(""),
     val imageUrl: String = "",
     val type: FilterType = FilterType.UNKNOWN,
-    val queryValue: String = "",
+    val query: String = "",
 )

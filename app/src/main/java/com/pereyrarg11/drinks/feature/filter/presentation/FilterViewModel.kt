@@ -9,8 +9,11 @@ import androidx.lifecycle.viewModelScope
 import com.pereyrarg11.drinks.core.data.util.Converter
 import com.pereyrarg11.drinks.core.domain.model.DrinkModel
 import com.pereyrarg11.drinks.core.domain.model.FilterType
+import com.pereyrarg11.drinks.core.domain.use_case.UnescapeTextUseCase
 import com.pereyrarg11.drinks.core.domain.util.DataResult
 import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
+import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants
+import com.pereyrarg11.drinks.core.presentation.util.UiText
 import com.pereyrarg11.drinks.feature.filter.domain.repository.FilterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -21,14 +24,18 @@ class FilterViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     private val repository: FilterRepository,
     private val drinkListConverter: Converter<List<DrinkModel>, List<DrinkDisplayable>>,
+    val unescapeTextUseCase: UnescapeTextUseCase,
 ) : ViewModel() {
     var state by mutableStateOf(FilterState())
 
     init {
         viewModelScope.launch {
-            // TODO: create a NavigationConstants class, then move these keys there
-            val filterType = savedStateHandle.get<String>("filterType") ?: return@launch
-            val query = savedStateHandle.get<String>("query") ?: return@launch
+            // TODO: show error message when some param is missing
+            val filterType =
+                savedStateHandle.get<String>(NavConstants.FILTER_TYPE_PARAM) ?: return@launch
+            val query = savedStateHandle.get<String>(NavConstants.QUERY_PARAM) ?: return@launch
+
+            setTitleFromQueryParam(query)
 
             val filterFlow = when (FilterType.findByParam(filterType)) {
                 FilterType.ALCOHOL -> repository.filterDrinksByAlcohol(query)
@@ -57,5 +64,10 @@ class FilterViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    private fun setTitleFromQueryParam(query: String) {
+        val title = unescapeTextUseCase(query)
+        state = state.copy(title = UiText.PlainText(title))
     }
 }

@@ -9,4 +9,5 @@ data class FilterState(
     val hasError: Boolean = false,
     val drinks: List<DrinkDisplayable> = emptyList(),
     val errorMessage: UiText = UiText.StringResource(R.string.error_default),
+    val title: UiText = UiText.StringResource(R.string.title_drinks),
 )
