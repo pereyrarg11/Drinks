@@ -8,7 +8,6 @@ import com.pereyrarg11.drinks.core.presentation.ErrorScreen
 import com.pereyrarg11.drinks.core.presentation.LoadingScreen
 import com.pereyrarg11.drinks.core.presentation.MainScreen
 import com.pereyrarg11.drinks.core.presentation.components.DetailAppBar
-import com.pereyrarg11.drinks.core.presentation.util.UiText
 
 @Composable
 fun FilterScreen(
@@ -16,16 +15,16 @@ fun FilterScreen(
     modifier: Modifier = Modifier,
     viewModel: FilterViewModel = hiltViewModel(),
 ) {
-    // TODO: get screen title from query param
+    val state = viewModel.state
+
     MainScreen(
         modifier = modifier,
         topBar = {
-            DetailAppBar(title = UiText.PlainText("Drinks")) {
+            DetailAppBar(title = state.title) {
                 navController.popBackStack()
             }
         }
     ) { contentModifier ->
-        val state = viewModel.state
 
         when {
             state.hasError -> ErrorScreen(message = state.errorMessage, modifier = contentModifier)

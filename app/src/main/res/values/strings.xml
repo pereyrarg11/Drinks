@@ -14,5 +14,6 @@
     <string name="title_gin">Gin</string>
     <string name="title_scotch">Scotch</string>
     <string name="title_champagne">Champagne</string>
+    <string name="title_drinks">Drinks</string>
     <string name="action_back">Go back</string>
 </resources>

@@ -15,5 +15,6 @@
     <string name="title_gin">Ginebra</string>
     <string name="title_scotch">Escocés</string>
     <string name="title_champagne">Champaña</string>
+    <string name="title_drinks">Bebidas</string>
     <string name="action_back">Ir atrás</string>
 </resources>
