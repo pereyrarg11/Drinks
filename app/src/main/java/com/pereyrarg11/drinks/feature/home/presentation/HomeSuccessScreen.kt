@@ -1,6 +1,5 @@
 package com.pereyrarg11.drinks.feature.home.presentation
 
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -21,14 +20,11 @@ import com.pereyrarg11.drinks.feature.home.presentation.components.CircleRow
 import com.pereyrarg11.drinks.feature.home.presentation.components.HeroRow
 import com.pereyrarg11.drinks.feature.home.presentation.components.HorizontalGrid
 
-private fun handleNavigation(model: HomeFilterModel) {
-    Log.i("HomeSuccessScreen", "query:${model.type.param}=${model.queryValue}")
-}
-
 @Composable
 fun HomeSuccessScreen(
     sections: List<HomeSectionModel>,
     modifier: Modifier = Modifier,
+    onClickFilter: (HomeFilterModel) -> Unit = {},
 ) {
     val verticalSlotPadding = dimensionResource(id = R.dimen.size_lg)
 
@@ -45,15 +41,16 @@ fun HomeSuccessScreen(
             ) {
                 when (section.type) {
                     HomeSectionType.ALCOHOL -> HeroRow(models = section.filters) { model ->
-                        handleNavigation(model)
+                        // TODO: create a HomeFilterDisplayable, then use it instead of HomeFilterModel
+                        onClickFilter(model)
                     }
 
                     HomeSectionType.CATEGORIES -> HorizontalGrid(models = section.filters) { model ->
-                        handleNavigation(model)
+                        onClickFilter(model)
                     }
 
                     HomeSectionType.INGREDIENTS -> CircleRow(models = section.filters) { model ->
-                        handleNavigation(model)
+                        onClickFilter(model)
                     }
 
                     HomeSectionType.UNKNOWN -> {
