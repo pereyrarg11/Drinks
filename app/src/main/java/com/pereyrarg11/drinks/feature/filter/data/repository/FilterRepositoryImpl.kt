@@ -12,6 +12,7 @@ import com.skydoves.sandwich.suspendOnException
 import com.skydoves.sandwich.suspendOnSuccess
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import java.io.EOFException
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -41,10 +42,15 @@ class FilterRepositoryImpl @Inject constructor(
                     emit(DataResult.Success(listConverter.convert(this.data)))
                 }
                 .suspendOnError {
-                    emit(DataResult.Error(exception = Exception("Couldn't load data")))
+                    emit(DataResult.Error(exception = Exception("An error occurred when trying to fetch drinks by filter: $this")))
                 }
                 .suspendOnException {
-                    emit(DataResult.Error(exception = Exception(this.throwable)))
+                    // the API responds with an empty document when results were not found
+                    if (throwable is EOFException) {
+                        emit(DataResult.Success(emptyList()))
+                    } else {
+                        emit(DataResult.Error(exception = Exception(throwable)))
+                    }
                 }
         }
     }
