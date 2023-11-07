@@ -1,7 +1,7 @@
 package com.pereyrarg11.drinks.core.presentation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -10,21 +10,21 @@ import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 import com.pereyrarg11.drinks.core.presentation.util.UiText
 
 @Composable
-fun ErrorScreen(
+fun NoResultsScreen(
     modifier: Modifier = Modifier,
-    message: UiText = UiText.StringResource(R.string.error_default),
+    message: UiText = UiText.StringResource(R.string.error_no_results),
 ) {
     FeedbackScreen(
         message = message,
-        imageVector = Icons.Default.Build,
+        imageVector = Icons.Default.List,
         modifier = modifier,
     )
 }
 
 @Preview
 @Composable
-fun ErrorScreenPreview() {
+fun NoResultsScreenPreview() {
     DrinksTheme {
-        ErrorScreen()
+        NoResultsScreen()
     }
 }
