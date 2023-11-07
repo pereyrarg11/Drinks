@@ -17,4 +17,5 @@
     <string name="title_champagne">Champaña</string>
     <string name="title_drinks">Bebidas</string>
     <string name="action_back">Ir atrás</string>
+    <string name="error_missing_query_params">No se pudo realizar la búsqueda con los parámetros seleccionados.</string>
 </resources>

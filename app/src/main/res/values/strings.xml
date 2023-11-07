@@ -16,4 +16,5 @@
     <string name="title_champagne">Champagne</string>
     <string name="title_drinks">Drinks</string>
     <string name="action_back">Go back</string>
+    <string name="error_missing_query_params">The search could not be performed with the selected parameters.</string>
 </resources>

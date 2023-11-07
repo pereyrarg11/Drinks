@@ -1,12 +1,15 @@
 package com.pereyrarg11.drinks.feature.filter.presentation
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.data.util.Converter
+import com.pereyrarg11.drinks.core.data.util.MissingQueryParamsException
 import com.pereyrarg11.drinks.core.domain.model.DrinkModel
 import com.pereyrarg11.drinks.core.domain.model.FilterType
 import com.pereyrarg11.drinks.core.domain.use_case.UnescapeTextUseCase
@@ -29,25 +32,33 @@ class FilterViewModel @Inject constructor(
     var state by mutableStateOf(FilterState())
 
     init {
-        viewModelScope.launch {
-            // TODO: show error message when some param is missing
-            val filterType =
-                savedStateHandle.get<String>(NavConstants.FILTER_TYPE_PARAM) ?: return@launch
-            val query = savedStateHandle.get<String>(NavConstants.QUERY_PARAM) ?: return@launch
+        val filterType = savedStateHandle.get<String>(NavConstants.FILTER_TYPE_PARAM)
+        val query = savedStateHandle.get<String>(NavConstants.QUERY_PARAM)
 
+        if (filterType != null && query != null) {
             setTitleFromQueryParam(query)
+            fetchDrinksByFilterType(FilterType.findByParam(filterType), query)
+        } else {
+            handleError(MissingQueryParamsException())
+        }
+    }
 
-            val filterFlow = when (FilterType.findByParam(filterType)) {
+    private fun setTitleFromQueryParam(query: String) {
+        val title = unescapeTextUseCase(query)
+        state = state.copy(title = UiText.PlainText(title))
+    }
+
+    private fun fetchDrinksByFilterType(filterType: FilterType, query: String) {
+        viewModelScope.launch {
+            when (filterType) {
                 FilterType.ALCOHOL -> repository.filterDrinksByAlcohol(query)
                 FilterType.CATEGORY -> repository.filterDrinksByCategory(query)
                 FilterType.INGREDIENT -> repository.filterDrinksByIngredient(query)
                 FilterType.UNKNOWN -> return@launch
-            }
-
-            filterFlow.collect { result ->
-                state = when (result) {
+            }.collect { result ->
+                when (result) {
                     is DataResult.Success -> {
-                        state.copy(
+                        state = state.copy(
                             isLoading = false,
                             hasError = false,
                             drinks = drinkListConverter.convert(result.data)
@@ -55,19 +66,32 @@ class FilterViewModel @Inject constructor(
                     }
 
                     is DataResult.Error -> {
-                        state.copy(isLoading = false, hasError = true)
+                        handleError(result.exception)
                     }
 
                     is DataResult.Loading -> {
-                        state.copy(isLoading = result.isLoading, hasError = false)
+                        state = state.copy(isLoading = result.isLoading, hasError = false)
                     }
                 }
             }
         }
     }
 
-    private fun setTitleFromQueryParam(query: String) {
-        val title = unescapeTextUseCase(query)
-        state = state.copy(title = UiText.PlainText(title))
+    private fun handleError(exception: Exception?) {
+        if (exception != null) {
+            // TODO: log this exception through ErrorLogger or similar
+            Log.e("FilterViewModel", "handleError: ${exception.message}")
+        }
+
+        val errorMessage = when (exception) {
+            is MissingQueryParamsException -> UiText.StringResource(R.string.error_missing_query_params)
+            else -> UiText.StringResource(R.string.error_default)
+        }
+
+        state = state.copy(
+            isLoading = false,
+            hasError = true,
+            errorMessage = errorMessage
+        )
     }
 }
