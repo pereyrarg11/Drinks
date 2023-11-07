@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bebidas</string>
+    <!-- Actions -->
+    <string name="action_back">Ir atrás</string>
+    <!-- Errors -->
     <string name="error_default">Ocurrió un error. Intente más tarde.</string>
+    <string name="error_missing_query_params">No se pudo realizar la búsqueda con los parámetros seleccionados.</string>
+    <string name="error_no_results">No se encontraron resultados.</string>
+    <!-- Messages -->
     <string name="message_loading">Cargando</string>
+    <!-- Titles -->
     <string name="title_ingredients">Ingredientes</string>
     <string name="title_categories">Categorías</string>
     <string name="title_alcoholic">Alcoholicas</string>
@@ -16,7 +23,5 @@
     <string name="title_scotch">Escocés</string>
     <string name="title_champagne">Champaña</string>
     <string name="title_drinks">Bebidas</string>
-    <string name="action_back">Ir atrás</string>
-    <string name="error_missing_query_params">No se pudo realizar la búsqueda con los parámetros seleccionados.</string>
-    <string name="error_no_results">No se encontraron resultados.</string>
+    <!-- Next lines were added automatically by Resource Manager, please sort them in the above categories. -->
 </resources>
