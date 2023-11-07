@@ -47,7 +47,7 @@ fun DrinksAppContent(
                     HomeScreen(navController = navController)
                 }
                 composable(ScreenRoute.Filter.route) {
-                    FilterScreen()
+                    FilterScreen(navController = navController)
                 }
             }
         }
