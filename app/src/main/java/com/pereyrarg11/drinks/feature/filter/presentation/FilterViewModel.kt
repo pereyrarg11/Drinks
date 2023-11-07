@@ -29,7 +29,7 @@ class FilterViewModel @Inject constructor(
     private val drinkListConverter: Converter<List<DrinkModel>, List<DrinkDisplayable>>,
     val unescapeTextUseCase: UnescapeTextUseCase,
 ) : ViewModel() {
-    var state by mutableStateOf(FilterState())
+    var state by mutableStateOf(FilterState(isLoading = true))
 
     init {
         val filterType = savedStateHandle.get<String>(NavConstants.FILTER_TYPE_PARAM)

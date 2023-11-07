@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import com.pereyrarg11.drinks.core.presentation.ErrorScreen
 import com.pereyrarg11.drinks.core.presentation.LoadingScreen
 import com.pereyrarg11.drinks.core.presentation.MainScreen
+import com.pereyrarg11.drinks.core.presentation.NoResultsScreen
 import com.pereyrarg11.drinks.core.presentation.components.DetailAppBar
 
 @Composable
@@ -28,10 +29,16 @@ fun FilterScreen(
 
         when {
             state.hasError -> ErrorScreen(message = state.errorMessage, modifier = contentModifier)
-            !state.isLoading && !state.hasError -> FilterSuccessScreen(
-                drinks = state.drinks,
-                modifier = contentModifier
-            )
+            !state.isLoading && !state.hasError -> {
+                if (state.drinks.isEmpty()) {
+                    NoResultsScreen()
+                } else {
+                    FilterSuccessScreen(
+                        drinks = state.drinks,
+                        modifier = contentModifier
+                    )
+                }
+            }
 
             else -> LoadingScreen(modifier = contentModifier)
         }
