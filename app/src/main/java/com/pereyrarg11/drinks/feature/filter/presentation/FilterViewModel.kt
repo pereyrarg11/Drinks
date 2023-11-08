@@ -22,6 +22,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+// TODO: extend from BaseViewModel
 @HiltViewModel
 class FilterViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,

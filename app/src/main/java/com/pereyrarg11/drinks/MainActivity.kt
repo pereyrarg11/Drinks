@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.pereyrarg11.drinks.core.presentation.navigation.ScreenRoute
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
+import com.pereyrarg11.drinks.feature.drink.presentation.DrinkScreen
 import com.pereyrarg11.drinks.feature.filter.presentation.FilterScreen
 import com.pereyrarg11.drinks.feature.home.presentation.HomeScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -48,6 +49,9 @@ fun DrinksAppContent(
                 }
                 composable(ScreenRoute.Filter.route) {
                     FilterScreen(navController = navController)
+                }
+                composable(ScreenRoute.Drink.route) {
+                    DrinkScreen(navController = navController)
                 }
             }
         }

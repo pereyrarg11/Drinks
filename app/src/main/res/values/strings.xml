@@ -5,7 +5,9 @@
     <string name="action_back">Go back</string>
     <!-- Errors -->
     <string name="error_default">Something went wrong. Try later.</string>
-    <string name="error_missing_query_params">The search could not be performed with the selected parameters.</string>
+    <string name="error_missing_query_params">The search could not be performed with the selected
+        parameters.
+    </string>
     <string name="error_no_results">Results not found.</string>
     <!-- Messages -->
     <string name="message_loading">Loading</string>
@@ -23,5 +25,7 @@
     <string name="title_scotch">Scotch</string>
     <string name="title_champagne">Champagne</string>
     <string name="title_drinks">Drinks</string>
+    <string name="title_drink">Drink</string>
+    <string name="title_recipe">Preparation mode</string>
     <!-- Next lines were added automatically by Resource Manager, please sort them in the above categories. -->
 </resources>

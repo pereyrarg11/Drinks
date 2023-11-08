@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.core.data.remote.dto
+package com.pereyrarg11.drinks.feature.drink.data.remote.dto
 
 /**
  * Data model to contain attributes related to drink ingredients.

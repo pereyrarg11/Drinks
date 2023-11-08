@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.core.domain.model
+package com.pereyrarg11.drinks.feature.drink.domain.model
 
 data class DrinkMediaModel(
     val thumbUrl: String = "",
