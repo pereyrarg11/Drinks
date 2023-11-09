@@ -4,6 +4,7 @@ import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
 import com.pereyrarg11.drinks.core.presentation.util.UiText
 
+// TODO: implement UiState
 data class FilterState(
     val isLoading: Boolean = false,
     val hasError: Boolean = false,

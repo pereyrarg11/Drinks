@@ -5,7 +5,9 @@
     <string name="action_back">Ir atrás</string>
     <!-- Errors -->
     <string name="error_default">Ocurrió un error. Intente más tarde.</string>
-    <string name="error_missing_query_params">No se pudo realizar la búsqueda con los parámetros seleccionados.</string>
+    <string name="error_missing_query_params">No se pudo realizar la búsqueda con los parámetros
+        seleccionados.
+    </string>
     <string name="error_no_results">No se encontraron resultados.</string>
     <!-- Messages -->
     <string name="message_loading">Cargando</string>
@@ -23,5 +25,7 @@
     <string name="title_scotch">Escocés</string>
     <string name="title_champagne">Champaña</string>
     <string name="title_drinks">Bebidas</string>
+    <string name="title_drink">Bebida</string>
+    <string name="title_recipe">Modo de preparación</string>
     <!-- Next lines were added automatically by Resource Manager, please sort them in the above categories. -->
 </resources>

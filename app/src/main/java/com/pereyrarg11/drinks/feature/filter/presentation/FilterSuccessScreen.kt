@@ -22,6 +22,7 @@ import com.pereyrarg11.drinks.core.presentation.util.StaticDisplayableProvider
 fun FilterSuccessScreen(
     drinks: List<DrinkDisplayable>,
     modifier: Modifier = Modifier,
+    onClickDrink: (DrinkDisplayable) -> Unit = {},
 ) {
     val columns = 2
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
@@ -37,12 +38,14 @@ fun FilterSuccessScreen(
         verticalArrangement = Arrangement.spacedBy(padding),
         horizontalArrangement = Arrangement.spacedBy(padding),
     ) {
-        items(drinks) {
+        items(drinks) { drink ->
             HeroCard(
-                label = it.label,
-                imageUrl = it.imageUrl,
+                label = drink.label,
+                imageUrl = drink.imageUrl,
                 modifier = Modifier.height(cardHeight),
-            )
+            ) {
+                onClickDrink(drink)
+            }
         }
     }
 }

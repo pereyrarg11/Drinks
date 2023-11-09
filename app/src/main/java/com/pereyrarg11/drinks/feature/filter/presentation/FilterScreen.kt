@@ -9,6 +9,7 @@ import com.pereyrarg11.drinks.core.presentation.LoadingScreen
 import com.pereyrarg11.drinks.core.presentation.MainScreen
 import com.pereyrarg11.drinks.core.presentation.NoResultsScreen
 import com.pereyrarg11.drinks.core.presentation.components.DetailAppBar
+import com.pereyrarg11.drinks.core.presentation.navigation.ScreenRoute
 
 @Composable
 fun FilterScreen(
@@ -36,7 +37,9 @@ fun FilterScreen(
                     FilterSuccessScreen(
                         drinks = state.drinks,
                         modifier = contentModifier
-                    )
+                    ) { drink ->
+                        navController.navigate(ScreenRoute.Drink.createRoute(drink.id))
+                    }
                 }
             }
 

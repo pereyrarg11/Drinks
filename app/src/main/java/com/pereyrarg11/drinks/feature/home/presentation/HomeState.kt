@@ -4,6 +4,7 @@ import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.util.UiText
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionModel
 
+// TODO: implement UiState
 data class HomeState(
     val isLoading: Boolean = false,
     val hasError: Boolean = false,

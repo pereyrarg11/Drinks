@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.data.util.Converter
-import com.pereyrarg11.drinks.core.data.util.MissingQueryParamsException
+import com.pereyrarg11.drinks.core.data.util.MissingParamsException
 import com.pereyrarg11.drinks.core.domain.model.DrinkModel
 import com.pereyrarg11.drinks.core.domain.model.FilterType
 import com.pereyrarg11.drinks.core.domain.use_case.UnescapeTextUseCase
@@ -22,6 +22,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+// TODO: extend from BaseViewModel
 @HiltViewModel
 class FilterViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
@@ -39,7 +40,7 @@ class FilterViewModel @Inject constructor(
             setTitleFromQueryParam(query)
             fetchDrinksByFilterType(FilterType.findByParam(filterType), query)
         } else {
-            handleError(MissingQueryParamsException())
+            handleError(MissingParamsException())
         }
     }
 
@@ -84,7 +85,7 @@ class FilterViewModel @Inject constructor(
         }
 
         val errorMessage = when (exception) {
-            is MissingQueryParamsException -> UiText.StringResource(R.string.error_missing_query_params)
+            is MissingParamsException -> UiText.StringResource(R.string.error_missing_query_params)
             else -> UiText.StringResource(R.string.error_default)
         }
 
