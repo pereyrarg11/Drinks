@@ -56,7 +56,7 @@ class RemoteDrinkDetailConverter @Inject constructor(
             strDrinkThumb = input.strDrinkThumb,
             strVideo = input.strVideo,
             strImageSource = input.strImageSource,
-            strImageAttribution = input.strImageAttribution
+            strImageAttribution = input.strImageAttribution,
         )
 
         return mediaConverter.convert(drinkMediaDto)

@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.pereyrarg11.drinks.core.data.util.Converter
-import com.pereyrarg11.drinks.core.data.util.MissingQueryParamsException
+import com.pereyrarg11.drinks.core.data.util.MissingParamsException
 import com.pereyrarg11.drinks.core.domain.util.DataResult
 import com.pereyrarg11.drinks.core.presentation.BaseViewModel
 import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants.ID_PARAM
@@ -34,7 +34,7 @@ class DrinkViewModel @Inject constructor(
         if (!id.isNullOrBlank()) {
             fetchDrinkById(id)
         } else {
-            handleError(MissingQueryParamsException(ID_PARAM))
+            handleError(MissingParamsException(ID_PARAM))
         }
     }
 

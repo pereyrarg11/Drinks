@@ -13,7 +13,7 @@ class RemoteDrinkMediaConverter @Inject constructor() : Converter<DrinkMediaDto,
             thumbUrl = input.strDrinkThumb.orEmpty(),
             imageUrl = input.strImageSource.orEmpty(),
             videoUrl = input.strVideo.orEmpty(),
-            attribution = input.strImageAttribution.orEmpty()
+            attribution = input.strImageAttribution.orEmpty(),
         )
     }
 }

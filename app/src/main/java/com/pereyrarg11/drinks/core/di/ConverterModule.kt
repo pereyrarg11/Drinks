@@ -17,7 +17,6 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class ConverterModule {
-    /* Remote converters */
     @Binds
     abstract fun bindRemoteDrinkConverter(
         converter: RemoteDrinkConverter,
@@ -28,7 +27,6 @@ abstract class ConverterModule {
         converter: RemoteDrinkListConverter,
     ): Converter<DrinkListDto, List<DrinkModel>>
 
-    /* UI converters */
     @Binds
     abstract fun bindUiDrinkConverter(
         converter: UiDrinkConverter,

@@ -8,7 +8,6 @@ import javax.inject.Singleton
 
 @Singleton
 class RemoteDrinkConverter @Inject constructor() : Converter<DrinkDto, DrinkModel> {
-
     override fun convert(input: DrinkDto): DrinkModel {
         return DrinkModel(
             id = input.idDrink.orEmpty(),

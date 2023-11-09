@@ -13,7 +13,7 @@ class RemoteDrinkIngredientConverter @Inject constructor() :
     override fun convert(input: DrinkIngredientDto): DrinkIngredientModel {
         return DrinkIngredientModel(
             name = input.strIngredient.orEmpty(),
-            measure = input.strMeasure.orEmpty()
+            measure = input.strMeasure.orEmpty(),
         )
     }
 }
