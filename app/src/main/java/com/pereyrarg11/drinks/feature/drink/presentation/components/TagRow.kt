@@ -23,14 +23,14 @@ import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 import com.pereyrarg11.drinks.core.presentation.util.UiText
 import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkTagType.*
-import com.pereyrarg11.drinks.feature.drink.presentation.model.TagDisplayableItem
+import com.pereyrarg11.drinks.feature.drink.presentation.model.TagUiItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TagRow(
-    tags: List<TagDisplayableItem>,
+    tags: List<TagUiItem>,
     modifier: Modifier = Modifier,
-    onClickListener: (TagDisplayableItem) -> Unit = {},
+    onClickListener: (TagUiItem) -> Unit = {},
 ) {
     Row(
         modifier = modifier
@@ -74,21 +74,21 @@ fun TagRowPreview() {
     DrinksTheme {
         TagRow(
             tags = listOf(
-                TagDisplayableItem(
+                TagUiItem(
                     label = UiText.PlainText("Alcoholic"),
                     type = ALCOHOL,
                 ),
-                TagDisplayableItem(
+                TagUiItem(
                     label = UiText.PlainText("Cocktail"),
                 ),
-                TagDisplayableItem(
+                TagUiItem(
                     label = UiText.PlainText("Shot"),
                     type = CATEGORY,
                 ),
-                TagDisplayableItem(
+                TagUiItem(
                     label = UiText.PlainText("Other"),
                 ),
-                TagDisplayableItem(
+                TagUiItem(
                     label = UiText.PlainText("Non alcoholic"),
                     type = ALCOHOL,
                 ),

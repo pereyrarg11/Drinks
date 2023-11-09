@@ -21,15 +21,15 @@ import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.components.DefaultImage
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 import com.pereyrarg11.drinks.core.presentation.util.UiText
-import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkDetailDisplayable
+import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkUiDetail
 import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkTagType
-import com.pereyrarg11.drinks.feature.drink.presentation.model.TagDisplayableItem
+import com.pereyrarg11.drinks.feature.drink.presentation.model.TagUiItem
 
 @Composable
 fun DrinkSuccessScreen(
-    drink: DrinkDetailDisplayable,
+    drink: DrinkUiDetail,
     modifier: Modifier = Modifier,
-    onClickTag: (TagDisplayableItem) -> Unit = {},
+    onClickTag: (TagUiItem) -> Unit = {},
 ) {
     val innerPadding = dimensionResource(id = R.dimen.size_md)
 
@@ -88,7 +88,7 @@ fun DrinkSuccessScreen(
 fun DrinkSuccessScreenPreview() {
     DrinksTheme {
         DrinkSuccessScreen(
-            drink = DrinkDetailDisplayable(
+            drink = DrinkUiDetail(
                 title = UiText.PlainText("Margarita"),
                 mediaUrl = "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
                 glassLabel = UiText.PlainText("Cocktail glass"),
@@ -98,13 +98,13 @@ fun DrinkSuccessScreenPreview() {
                     UiText.PlainText("1 oz Lime juice"),
                     UiText.PlainText("Salt"),
                 ),
-                instructions = UiText.PlainText("Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass."),
+                instructions = UiText.PlainText("Rub the rim of the glass with the lime slice."),
                 tags = listOf(
-                    TagDisplayableItem(
+                    TagUiItem(
                         label = UiText.PlainText("Alcoholic"),
                         type = DrinkTagType.ALCOHOL,
                     ),
-                    TagDisplayableItem(
+                    TagUiItem(
                         label = UiText.PlainText("Cocktail"),
                         type = DrinkTagType.CATEGORY,
                     ),

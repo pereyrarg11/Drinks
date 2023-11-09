@@ -12,7 +12,7 @@ import com.pereyrarg11.drinks.core.presentation.BaseViewModel
 import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants.ID_PARAM
 import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkDetailModel
 import com.pereyrarg11.drinks.feature.drink.domain.usecase.GetDrinkUseCase
-import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkDetailDisplayable
+import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkUiDetail
 import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -22,7 +22,7 @@ import javax.inject.Inject
 class DrinkViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     val getDrink: GetDrinkUseCase,
-    val converter: Converter<DrinkDetailModel, DrinkDetailDisplayable>,
+    val converter: Converter<DrinkDetailModel, DrinkUiDetail>,
 ) : BaseViewModel() {
 
     // TODO: look for a way to move this property to abstract class

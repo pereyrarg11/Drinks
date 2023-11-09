@@ -14,7 +14,7 @@ import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkDetailModel
 import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkIngredientModel
 import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkMediaModel
 import com.pereyrarg11.drinks.feature.drink.presentation.converter.UiDrinkDetailConverter
-import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkDetailDisplayable
+import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkUiDetail
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -53,5 +53,5 @@ abstract class DrinkConverterModule {
     @Binds
     abstract fun bindUiDrinkDetailConverter(
         converter: UiDrinkDetailConverter,
-    ): Converter<DrinkDetailModel, DrinkDetailDisplayable>
+    ): Converter<DrinkDetailModel, DrinkUiDetail>
 }
