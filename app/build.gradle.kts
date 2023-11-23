@@ -6,6 +6,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    // Google services Gradle plugin
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -56,6 +58,7 @@ android {
         }
         getByName("debug") {
             signingConfig = signingConfigs.getByName("debug")
+            applicationIdSuffix = ".debug"
         }
     }
     compileOptions {
@@ -118,6 +121,12 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     // Sandwich
     implementation("com.github.skydoves:sandwich-retrofit:2.0.0")
+
+    /* Firebase */
+    // BoM
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
+    // Analytics
+    implementation("com.google.firebase:firebase-analytics")
 }
 
 fun getSigningPropertiesByFlavorName(flavorName: String): Properties {

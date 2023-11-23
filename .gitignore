@@ -45,9 +45,6 @@ render.experimental.xml
 # Keystore files
 *.keystore
 
-# Google Services (e.g. APIs or Firebase)
-google-services.json
-
 # Android Profiling
 *.hprof
 
@@ -97,9 +94,6 @@ proguard/
 *.swp
 
 # Keystore files
-
-# Google Services (e.g. APIs or Firebase)
-# google-services.json
 
 # Android Patch
 
