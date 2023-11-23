@@ -10,6 +10,13 @@ plugins {
 
 android {
     signingConfigs {
+        getByName("debug") {
+            val signingProperties = getSigningPropertiesByFlavorName(this.name)
+            storePassword = signingProperties.getProperty("STORE_PASSWORD")
+            keyPassword = signingProperties.getProperty("KEY_PASSWORD")
+            keyAlias = signingProperties.getProperty("KEY_ALIAS")
+            storeFile = file(signingProperties.getProperty("STORE_FILE_PATH"))
+        }
         create("release") {
             val releaseSigningProperties = getSigningPropertiesByFlavorName(this.name)
             storePassword = releaseSigningProperties.getProperty("STORE_PASSWORD")
@@ -46,6 +53,9 @@ android {
                 "proguard-rules.pro"
             )
             signingConfig = signingConfigs.getByName("release")
+        }
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
