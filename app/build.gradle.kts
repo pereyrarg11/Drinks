@@ -1,3 +1,4 @@
+import com.google.firebase.appdistribution.gradle.firebaseAppDistribution
 import java.io.FileInputStream
 import java.util.Properties
 
@@ -8,6 +9,8 @@ plugins {
     id("com.google.dagger.hilt.android")
     // Google services Gradle plugin
     id("com.google.gms.google-services")
+    // App Distribution Gradle plugin
+    id("com.google.firebase.appdistribution")
 }
 
 android {
@@ -44,6 +47,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
+        }
+        firebaseAppDistribution {
+            artifactType = "APK"
+            serviceCredentialsFile = "secrets/google-service-account/drinks-55968-bdbeabcf946b.json"
+            // groups, testers and releaseNotes SHOULD be added on gradle command execution
         }
     }
 
