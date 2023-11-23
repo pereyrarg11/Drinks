@@ -43,7 +43,6 @@ deploymentTargetDropDown.xml
 render.experimental.xml
 
 # Keystore files
-*.jks
 *.keystore
 
 # Google Services (e.g. APIs or Firebase)
@@ -78,9 +77,6 @@ out/
 
 # Gradle files
 .gradle
-
-# Signing files
-.signing/
 
 # Local configuration file (sdk path, etc)
 

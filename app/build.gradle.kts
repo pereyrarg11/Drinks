@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,6 +9,16 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        create("release") {
+            val releaseSigningProperties = getSigningPropertiesByFlavorName(this.name)
+            storePassword = releaseSigningProperties.getProperty("STORE_PASSWORD")
+            keyPassword = releaseSigningProperties.getProperty("KEY_PASSWORD")
+            keyAlias = releaseSigningProperties.getProperty("KEY_ALIAS")
+            storeFile = file(releaseSigningProperties.getProperty("STORE_FILE_PATH"))
+        }
+    }
+
     namespace = "com.pereyrarg11.drinks"
     compileSdk = 34
 
@@ -32,6 +45,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
@@ -94,4 +108,11 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     // Sandwich
     implementation("com.github.skydoves:sandwich-retrofit:2.0.0")
+}
+
+fun getSigningPropertiesByFlavorName(flavorName: String): Properties {
+    val signingPropertiesFile = rootProject.file("signing/$flavorName/signing.properties")
+    val properties = Properties()
+    properties.load(FileInputStream(signingPropertiesFile))
+    return properties
 }
