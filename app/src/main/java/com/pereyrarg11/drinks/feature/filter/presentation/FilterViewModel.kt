@@ -1,35 +1,35 @@
 package com.pereyrarg11.drinks.feature.filter.presentation
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.data.util.Converter
 import com.pereyrarg11.drinks.core.data.util.MissingParamsException
 import com.pereyrarg11.drinks.core.domain.model.DrinkModel
 import com.pereyrarg11.drinks.core.domain.model.FilterType
 import com.pereyrarg11.drinks.core.domain.use_case.UnescapeTextUseCase
 import com.pereyrarg11.drinks.core.domain.util.DataResult
+import com.pereyrarg11.drinks.core.presentation.BaseViewModel
 import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
 import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants
 import com.pereyrarg11.drinks.core.presentation.util.UiText
+import com.pereyrarg11.drinks.core.util.error.ErrorLogger
 import com.pereyrarg11.drinks.feature.filter.domain.repository.FilterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// TODO: extend from BaseViewModel
 @HiltViewModel
 class FilterViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
+    errorLogger: ErrorLogger,
     private val repository: FilterRepository,
     private val drinkListConverter: Converter<List<DrinkModel>, List<DrinkDisplayable>>,
     val unescapeTextUseCase: UnescapeTextUseCase,
-) : ViewModel() {
+) : BaseViewModel(errorLogger) {
+
     var state by mutableStateOf(FilterState(isLoading = true))
 
     init {
@@ -78,21 +78,13 @@ class FilterViewModel @Inject constructor(
         }
     }
 
-    private fun handleError(exception: Exception?) {
-        if (exception != null) {
-            // TODO: log this exception through ErrorLogger or similar
-            Log.e("FilterViewModel", "handleError: ${exception.message}")
-        }
-
-        val errorMessage = when (exception) {
-            is MissingParamsException -> UiText.StringResource(R.string.error_missing_query_params)
-            else -> UiText.StringResource(R.string.error_default)
-        }
+    override fun handleError(exception: Exception?) {
+        if (exception != null) logException(exception)
 
         state = state.copy(
             isLoading = false,
             hasError = true,
-            errorMessage = errorMessage
+            errorMessage = getErrorMessage(exception)
         )
     }
 }
