@@ -11,6 +11,8 @@ plugins {
     id("com.google.gms.google-services")
     // App Distribution Gradle plugin
     id("com.google.firebase.appdistribution")
+    // Crashlytics Gradle plugin
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -135,6 +137,8 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
     // Analytics
     implementation("com.google.firebase:firebase-analytics")
+    // Crashlytics
+    implementation("com.google.firebase:firebase-crashlytics")
 }
 
 fun getSigningPropertiesByFlavorName(flavorName: String): Properties {

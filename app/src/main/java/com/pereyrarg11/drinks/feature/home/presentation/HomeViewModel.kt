@@ -3,21 +3,20 @@ package com.pereyrarg11.drinks.feature.home.presentation
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.domain.util.DataResult
-import com.pereyrarg11.drinks.core.presentation.util.UiText
+import com.pereyrarg11.drinks.core.presentation.BaseViewModel
+import com.pereyrarg11.drinks.core.util.error.ErrorLogger
 import com.pereyrarg11.drinks.feature.home.domain.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// TODO: extend from BaseViewModel
 @HiltViewModel
 class HomeViewModel @Inject constructor(
+    errorLogger: ErrorLogger,
     private val repository: HomeRepository,
-) : ViewModel() {
+) : BaseViewModel(errorLogger) {
 
     var state by mutableStateOf(HomeState())
 
@@ -34,9 +33,9 @@ class HomeViewModel @Inject constructor(
     private fun fetchSections() {
         viewModelScope.launch {
             repository.fetchContent().collect { result ->
-                state = when (result) {
+                when (result) {
                     is DataResult.Success -> {
-                        state.copy(
+                        state = state.copy(
                             sections = result.data,
                             isLoading = false,
                             hasError = false
@@ -44,15 +43,11 @@ class HomeViewModel @Inject constructor(
                     }
 
                     is DataResult.Error -> {
-                        state.copy(
-                            hasError = true,
-                            errorMessage = UiText.StringResource(R.string.error_default),
-                            isLoading = false,
-                        )
+                        handleError(result.exception)
                     }
 
                     is DataResult.Loading -> {
-                        state.copy(
+                        state = state.copy(
                             isLoading = result.isLoading,
                             hasError = false,
                         )
@@ -60,5 +55,15 @@ class HomeViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    override fun handleError(exception: Exception?) {
+        if (exception != null) logException(exception)
+
+        state = state.copy(
+            isLoading = false,
+            hasError = true,
+            errorMessage = getErrorMessage(exception),
+        )
     }
 }

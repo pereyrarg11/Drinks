@@ -49,7 +49,7 @@ class FilterRepositoryImpl @Inject constructor(
                     if (throwable is EOFException) {
                         emit(DataResult.Success(emptyList()))
                     } else {
-                        emit(DataResult.Error(exception = Exception(throwable)))
+                        emit(DataResult.Error(exception = Exception(message, throwable)))
                     }
                 }
         }

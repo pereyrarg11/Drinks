@@ -25,6 +25,7 @@ fun HomeSuccessScreen(
     sections: List<HomeSectionModel>,
     modifier: Modifier = Modifier,
     onClickFilter: (HomeFilterModel) -> Unit = {},
+    onError: (Exception) -> Unit = {},
 ) {
     val verticalSlotPadding = dimensionResource(id = R.dimen.size_lg)
 
@@ -54,7 +55,7 @@ fun HomeSuccessScreen(
                     }
 
                     HomeSectionType.UNKNOWN -> {
-                        // TODO: this case could be recorded by Crashlytics/Error logger
+                        onError(Exception("HomeSectionType.UNKNOWN case reached."))
                     }
                 }
             }
