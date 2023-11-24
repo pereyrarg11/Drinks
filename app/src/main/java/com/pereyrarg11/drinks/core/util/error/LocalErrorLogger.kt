@@ -9,7 +9,7 @@ class LocalErrorLogger @Inject constructor() : ErrorLogger.Facade {
     private val logTag = "LocalErrorLogger"
 
     override fun logException(exception: Exception) {
-        Log.w(logTag, exception)
+        Log.e(logTag, exception.message, exception)
     }
 
     override fun setProperties(properties: Map<String, String>) {
