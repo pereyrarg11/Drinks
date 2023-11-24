@@ -22,14 +22,20 @@ fun HomeScreen(
 
         when {
             state.hasError -> ErrorScreen(message = state.errorMessage)
-            !state.isLoading && !state.hasError -> HomeSuccessScreen(sections = state.sections) { model ->
-                navController.navigate(
-                    ScreenRoute.Filter.createRoute(
-                        model.type.param,
-                        model.query
+            !state.isLoading && !state.hasError -> HomeSuccessScreen(
+                sections = state.sections,
+                onClickFilter = { model ->
+                    navController.navigate(
+                        ScreenRoute.Filter.createRoute(
+                            model.type.param,
+                            model.query
+                        )
                     )
-                )
-            }
+                },
+                onError = { exception ->
+                    viewModel.logException(exception)
+                },
+            )
 
             else -> LoadingScreen()
         }
