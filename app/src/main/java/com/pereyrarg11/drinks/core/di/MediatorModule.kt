@@ -11,5 +11,5 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class MediatorModule {
     @Binds
-    abstract fun bind(errorLogger: ErrorLoggerMediator): ErrorLogger
+    abstract fun bindErrorLoggerMediator(errorLogger: ErrorLoggerMediator): ErrorLogger
 }

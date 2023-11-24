@@ -10,6 +10,7 @@ import com.pereyrarg11.drinks.core.data.util.MissingParamsException
 import com.pereyrarg11.drinks.core.domain.util.DataResult
 import com.pereyrarg11.drinks.core.presentation.BaseViewModel
 import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants.ID_PARAM
+import com.pereyrarg11.drinks.core.util.error.ErrorLogger
 import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkDetailModel
 import com.pereyrarg11.drinks.feature.drink.domain.usecase.GetDrinkUseCase
 import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkUiDetail
@@ -21,9 +22,10 @@ import javax.inject.Inject
 @HiltViewModel
 class DrinkViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
+    errorLogger: ErrorLogger,
     val getDrink: GetDrinkUseCase,
     val converter: Converter<DrinkDetailModel, DrinkUiDetail>,
-) : BaseViewModel() {
+) : BaseViewModel(errorLogger) {
 
     // TODO: look for a way to move this property to abstract class
     var uiState by mutableStateOf(DrinkUiState(isLoading = true))
