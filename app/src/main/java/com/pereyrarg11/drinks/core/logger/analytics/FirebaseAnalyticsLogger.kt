@@ -6,7 +6,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class FirebaseAnalyticsLoggerFacade @Inject constructor(
+class FirebaseAnalyticsLogger @Inject constructor(
     private val firebaseAnalytics: FirebaseAnalytics,
 ) : AnalyticsLogger.Facade {
 

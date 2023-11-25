@@ -5,7 +5,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DebugAnalyticsLoggerFacade @Inject constructor(
+class DebugAnalyticsLogger @Inject constructor(
     private val debugLogger: DebugLogger,
 ) : AnalyticsLogger.Facade {
 

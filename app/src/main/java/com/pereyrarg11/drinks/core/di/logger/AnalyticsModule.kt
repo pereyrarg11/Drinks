@@ -2,8 +2,8 @@ package com.pereyrarg11.drinks.core.di.logger
 
 import com.pereyrarg11.drinks.core.logger.analytics.AnalyticsLogger
 import com.pereyrarg11.drinks.core.logger.analytics.AnalyticsLoggerMediator
-import com.pereyrarg11.drinks.core.logger.analytics.DebugAnalyticsLoggerFacade
-import com.pereyrarg11.drinks.core.logger.analytics.FirebaseAnalyticsLoggerFacade
+import com.pereyrarg11.drinks.core.logger.analytics.DebugAnalyticsLogger
+import com.pereyrarg11.drinks.core.logger.analytics.FirebaseAnalyticsLogger
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,14 +15,14 @@ import dagger.multibindings.IntoSet
 abstract class AnalyticsModule {
     @Binds
     @IntoSet
-    abstract fun bindFirebaseAnalyticsLoggerFacade(
-        analyticsLoggerFacade: FirebaseAnalyticsLoggerFacade
+    abstract fun bindFirebaseAnalyticsLogger(
+        analyticsLogger: FirebaseAnalyticsLogger
     ): AnalyticsLogger.Facade
 
     @Binds
     @IntoSet
-    abstract fun bindDebugAnalyticsLoggerFacade(
-        analyticsLoggerFacade: DebugAnalyticsLoggerFacade
+    abstract fun bindDebugAnalyticsLogger(
+        analyticsLogger: DebugAnalyticsLogger
     ): AnalyticsLogger.Facade
 
     @Binds
