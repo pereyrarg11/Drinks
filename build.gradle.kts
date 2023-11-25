@@ -9,4 +9,7 @@ plugins {
     id("com.google.firebase.appdistribution") version "4.0.1" apply false
     // Crashlytics Gradle plugin
     id("com.google.firebase.crashlytics") version "2.9.9" apply false
+    // Detekt
+    // TODO: set Detekt version as constant in buildSrc
+    id("io.gitlab.arturbosch.detekt") version "1.23.3" apply false
 }
