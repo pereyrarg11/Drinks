@@ -1,8 +1,8 @@
 package com.pereyrarg11.drinks.core.di
 
-import com.pereyrarg11.drinks.core.util.error.CrashlyticsErrorLogger
-import com.pereyrarg11.drinks.core.util.error.ErrorLogger
-import com.pereyrarg11.drinks.core.util.error.LocalErrorLogger
+import com.pereyrarg11.drinks.core.logger.error.CrashlyticsErrorLogger
+import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
+import com.pereyrarg11.drinks.core.logger.error.LocalErrorLogger
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

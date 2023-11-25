@@ -15,7 +15,7 @@ import com.pereyrarg11.drinks.core.presentation.BaseViewModel
 import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
 import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants
 import com.pereyrarg11.drinks.core.presentation.util.UiText
-import com.pereyrarg11.drinks.core.util.error.ErrorLogger
+import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
 import com.pereyrarg11.drinks.feature.filter.analytics.FilterAnalyticsLogger
 import com.pereyrarg11.drinks.feature.filter.domain.repository.FilterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,7 +1,7 @@
 package com.pereyrarg11.drinks.core.di
 
-import com.pereyrarg11.drinks.core.util.error.ErrorLogger
-import com.pereyrarg11.drinks.core.util.error.ErrorLoggerMediator
+import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
+import com.pereyrarg11.drinks.core.logger.error.ErrorLoggerMediator
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

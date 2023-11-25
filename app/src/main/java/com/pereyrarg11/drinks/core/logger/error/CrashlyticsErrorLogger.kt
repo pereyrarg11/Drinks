@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.core.util.error
+package com.pereyrarg11.drinks.core.logger.error
 
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.crashlytics.setCustomKeys

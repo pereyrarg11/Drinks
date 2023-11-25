@@ -10,7 +10,7 @@ import com.pereyrarg11.drinks.core.data.util.MissingParamsException
 import com.pereyrarg11.drinks.core.domain.util.DataResult
 import com.pereyrarg11.drinks.core.presentation.BaseViewModel
 import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants.ID_PARAM
-import com.pereyrarg11.drinks.core.util.error.ErrorLogger
+import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
 import com.pereyrarg11.drinks.feature.drink.analytics.DrinkAnalyticsLogger
 import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkDetailModel
 import com.pereyrarg11.drinks.feature.drink.domain.usecase.GetDrinkUseCase
