@@ -2,7 +2,7 @@ package com.pereyrarg11.drinks.feature.drink.analytics
 
 import com.pereyrarg11.drinks.core.logger.analytics.AnalyticsLogger
 import com.pereyrarg11.drinks.core.logger.analytics.model.Event
-import com.pereyrarg11.drinks.core.logger.analytics.model.Parameter
+import com.pereyrarg11.drinks.core.logger.analytics.model.AnalyticsParameter
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -15,8 +15,8 @@ class DrinkAnalyticsLoggerImpl @Inject constructor(
         analyticsLogger.logEvent(
             Event.SCREEN_VIEW,
             listOf(
-                Parameter.SCREEN_NAME to "DrinkScreen",
-                Parameter.DRINK_ID to drinkId,
+                AnalyticsParameter.SCREEN_NAME to "DrinkScreen",
+                AnalyticsParameter.DRINK_ID to drinkId,
             )
         )
     }
@@ -25,8 +25,8 @@ class DrinkAnalyticsLoggerImpl @Inject constructor(
         analyticsLogger.logEvent(
             Event.TAG_CLICK,
             listOf(
-                Parameter.TAG_TYPE to tagType,
-                Parameter.TAG_QUERY to tagQuery,
+                AnalyticsParameter.TAG_TYPE to tagType,
+                AnalyticsParameter.TAG_QUERY to tagQuery,
             )
         )
     }

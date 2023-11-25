@@ -2,7 +2,7 @@ package com.pereyrarg11.drinks.feature.filter.analytics
 
 import com.pereyrarg11.drinks.core.logger.analytics.AnalyticsLogger
 import com.pereyrarg11.drinks.core.logger.analytics.model.Event
-import com.pereyrarg11.drinks.core.logger.analytics.model.Parameter
+import com.pereyrarg11.drinks.core.logger.analytics.model.AnalyticsParameter
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -15,9 +15,9 @@ class FilterAnalyticsLoggerImpl @Inject constructor(
         analyticsLogger.logEvent(
             Event.SCREEN_VIEW,
             listOf(
-                Parameter.SCREEN_NAME to "FilterScreen",
-                Parameter.FILTER_TYPE to filterType,
-                Parameter.FILTER_QUERY to query,
+                AnalyticsParameter.SCREEN_NAME to "FilterScreen",
+                AnalyticsParameter.FILTER_TYPE to filterType,
+                AnalyticsParameter.FILTER_QUERY to query,
             )
         )
     }
@@ -26,8 +26,8 @@ class FilterAnalyticsLoggerImpl @Inject constructor(
         analyticsLogger.logEvent(
             Event.DRINK_CLICK,
             listOf(
-                Parameter.DRINK_ID to drinkId,
-                Parameter.DRINK_NAME to drinkName,
+                AnalyticsParameter.DRINK_ID to drinkId,
+                AnalyticsParameter.DRINK_NAME to drinkName,
             )
         )
     }

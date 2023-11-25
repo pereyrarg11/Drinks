@@ -1,6 +1,6 @@
 package com.pereyrarg11.drinks.core.logger.analytics.model
 
-object Parameter {
+object AnalyticsParameter {
     /* Group by feature */
 
     /* Core */
