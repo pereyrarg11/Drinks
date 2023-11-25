@@ -1,14 +1,19 @@
 package com.pereyrarg11.drinks.core.logger.analytics
 
-import android.util.Log
+import com.pereyrarg11.drinks.core.logger.debug.DebugLogger
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DebugAnalyticsLoggerFacade @Inject constructor() : AnalyticsLogger.Facade {
-    // TODO: inject DebugLogger (it does not exist yet)
+class DebugAnalyticsLoggerFacade @Inject constructor(
+    private val debugLogger: DebugLogger,
+) : AnalyticsLogger.Facade {
+
     override fun logEvent(eventName: String, payload: List<Pair<String, String>>) {
         val payloadAsString = payload.joinToString(", ") { "${it.first}:${it.second}" }
-        Log.d("AnalyticsLogger", "event:$eventName, payload:{$payloadAsString}")
+
+        debugLogger.logMessage("AnalyticsLogger") {
+            "event:$eventName, payload:{$payloadAsString}"
+        }
     }
 }
