@@ -7,6 +7,8 @@ import androidx.lifecycle.viewModelScope
 import com.pereyrarg11.drinks.core.domain.util.DataResult
 import com.pereyrarg11.drinks.core.presentation.BaseViewModel
 import com.pereyrarg11.drinks.core.util.error.ErrorLogger
+import com.pereyrarg11.drinks.feature.home.analytics.HomeAnalyticsLogger
+import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 import com.pereyrarg11.drinks.feature.home.domain.repository.HomeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,11 +18,13 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     errorLogger: ErrorLogger,
     private val repository: HomeRepository,
+    private val analyticsLogger: HomeAnalyticsLogger,
 ) : BaseViewModel(errorLogger) {
 
     var state by mutableStateOf(HomeState())
 
     init {
+        analyticsLogger.enterScreen()
         onEvent(HomeEvent.Refresh)
     }
 
@@ -65,5 +69,9 @@ class HomeViewModel @Inject constructor(
             hasError = true,
             errorMessage = getErrorMessage(exception),
         )
+    }
+
+    fun onClickHomeFilter(homeFilter: HomeFilterModel) {
+        analyticsLogger.clickFilter(homeFilter)
     }
 }

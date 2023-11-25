@@ -40,6 +40,7 @@ fun DrinkScreen(
                 drink = uiState.drink,
                 modifier = contentModifier
             ) { tag ->
+                viewModel.onClickTag(tag)
                 val filterType = when (tag.type) {
                     DrinkTagType.ALCOHOL -> FilterType.ALCOHOL
                     DrinkTagType.CATEGORY -> FilterType.CATEGORY

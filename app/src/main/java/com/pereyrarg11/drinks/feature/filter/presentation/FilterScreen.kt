@@ -38,6 +38,7 @@ fun FilterScreen(
                         drinks = state.drinks,
                         modifier = contentModifier
                     ) { drink ->
+                        viewModel.onClickDrink(drink)
                         navController.navigate(ScreenRoute.Drink.createRoute(drink.id))
                     }
                 }

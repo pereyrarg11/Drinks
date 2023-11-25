@@ -25,6 +25,7 @@ fun HomeScreen(
             !state.isLoading && !state.hasError -> HomeSuccessScreen(
                 sections = state.sections,
                 onClickFilter = { model ->
+                    viewModel.onClickHomeFilter(model)
                     navController.navigate(
                         ScreenRoute.Filter.createRoute(
                             model.type.param,

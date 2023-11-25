@@ -11,10 +11,12 @@ import com.pereyrarg11.drinks.core.domain.util.DataResult
 import com.pereyrarg11.drinks.core.presentation.BaseViewModel
 import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants.ID_PARAM
 import com.pereyrarg11.drinks.core.util.error.ErrorLogger
+import com.pereyrarg11.drinks.feature.drink.analytics.DrinkAnalyticsLogger
 import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkDetailModel
 import com.pereyrarg11.drinks.feature.drink.domain.usecase.GetDrinkUseCase
 import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkUiDetail
 import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkUiState
+import com.pereyrarg11.drinks.feature.drink.presentation.model.TagUiItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -25,6 +27,7 @@ class DrinkViewModel @Inject constructor(
     errorLogger: ErrorLogger,
     val getDrink: GetDrinkUseCase,
     val converter: Converter<DrinkDetailModel, DrinkUiDetail>,
+    private val analyticsLogger: DrinkAnalyticsLogger,
 ) : BaseViewModel(errorLogger) {
 
     // TODO: look for a way to move this property to abstract class
@@ -38,6 +41,7 @@ class DrinkViewModel @Inject constructor(
         } else {
             handleError(MissingParamsException(ID_PARAM))
         }
+        analyticsLogger.enterToScreen(id.orEmpty())
     }
 
     private fun fetchDrinkById(id: String) {
@@ -69,5 +73,9 @@ class DrinkViewModel @Inject constructor(
             hasError = true,
             errorMessage = getErrorMessage(exception),
         )
+    }
+
+    fun onClickTag(tag: TagUiItem) {
+        analyticsLogger.clickTag(tag.type.name, tag.query)
     }
 }
