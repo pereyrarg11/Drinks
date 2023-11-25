@@ -12,7 +12,39 @@ import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType
  * Useful for preview mode and first app version.
  */
 object StaticHomeProvider {
-    private fun getAllFilters(): List<HomeFilterModel> = listOf(
+    private fun getSection(type: HomeSectionType): HomeSectionModel {
+        return when (type) {
+            HomeSectionType.ALCOHOL -> HomeSectionModel(
+                filters = getAlcoholFilters(),
+                type = type
+            )
+
+            HomeSectionType.CATEGORIES -> HomeSectionModel(
+                label = UiText.StringResource(R.string.title_categories),
+                filters = getCategoryFilters(),
+                type
+            )
+
+            HomeSectionType.INGREDIENTS -> HomeSectionModel(
+                label = UiText.StringResource(R.string.title_ingredients),
+                filters = getIngredientFilters(),
+                type
+            )
+
+            HomeSectionType.UNKNOWN -> HomeSectionModel(
+                filters = emptyList(),
+                type = type
+            )
+        }
+    }
+
+    fun getAllSections(): List<HomeSectionModel> = listOf(
+        getAlcoholSection(),
+        getCategoriesSection(),
+        getIngredientsSection(),
+    )
+
+    fun getAlcoholFilters(): List<HomeFilterModel> = listOf(
         HomeFilterModel(
             label = UiText.StringResource(R.string.title_alcoholic),
             imageUrl = "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
@@ -31,6 +63,9 @@ object StaticHomeProvider {
             type = FilterType.ALCOHOL,
             query = "Optional_alcohol"
         ),
+    )
+
+    fun getCategoryFilters(): List<HomeFilterModel> = listOf(
         HomeFilterModel(
             label = UiText.StringResource(R.string.title_cocktail),
             imageUrl = "https://www.thecocktaildb.com/images/media/drink/rptuxy1472669372.jpg",
@@ -61,6 +96,9 @@ object StaticHomeProvider {
             type = FilterType.CATEGORY,
             query = "Coffee_/_Tea"
         ),
+    )
+
+    fun getIngredientFilters(): List<HomeFilterModel> = listOf(
         HomeFilterModel(
             label = UiText.StringResource(R.string.title_gin),
             imageUrl = "https://www.thecocktaildb.com/images/ingredients/gin.png",
@@ -78,12 +116,6 @@ object StaticHomeProvider {
             imageUrl = "https://www.thecocktaildb.com/images/ingredients/brandy.png",
             type = FilterType.INGREDIENT,
             query = "Brandy"
-        ),
-        HomeFilterModel(
-            label = UiText.StringResource(R.string.title_champagne),
-            imageUrl = "https://www.thecocktaildb.com/images/ingredients/champagne.png",
-            type = FilterType.INGREDIENT,
-            query = "Champagne"
         ),
         HomeFilterModel(
             label = UiText.PlainText("Tequila"),
@@ -123,50 +155,9 @@ object StaticHomeProvider {
         ),
     )
 
-    private fun getFiltersByType(filter: FilterType): List<HomeFilterModel> =
-        getAllFilters().filter { it.type == filter }
+    private fun getAlcoholSection(): HomeSectionModel = getSection(HomeSectionType.ALCOHOL)
 
-    private fun getSection(type: HomeSectionType): HomeSectionModel {
-        return when (type) {
-            HomeSectionType.ALCOHOL -> HomeSectionModel(
-                filters = getAlcoholFilters(),
-                type = type
-            )
+    private fun getCategoriesSection(): HomeSectionModel = getSection(HomeSectionType.CATEGORIES)
 
-            HomeSectionType.CATEGORIES -> HomeSectionModel(
-                label = UiText.StringResource(R.string.title_categories),
-                filters = getCategoryFilters(),
-                type
-            )
-
-            HomeSectionType.INGREDIENTS -> HomeSectionModel(
-                label = UiText.StringResource(R.string.title_ingredients),
-                filters = getIngredientFilters(),
-                type
-            )
-
-            HomeSectionType.UNKNOWN -> HomeSectionModel(
-                filters = emptyList(),
-                type = type
-            )
-        }
-    }
-
-    fun getAllSections(): List<HomeSectionModel> = listOf(
-        getAlcoholSection(),
-        getCategoriesSection(),
-        getIngredientsSection(),
-    )
-
-    fun getAlcoholFilters(): List<HomeFilterModel> = getFiltersByType(FilterType.ALCOHOL)
-
-    fun getCategoryFilters(): List<HomeFilterModel> = getFiltersByType(FilterType.CATEGORY)
-
-    fun getIngredientFilters(): List<HomeFilterModel> = getFiltersByType(FilterType.INGREDIENT)
-
-    fun getAlcoholSection(): HomeSectionModel = getSection(HomeSectionType.ALCOHOL)
-
-    fun getCategoriesSection(): HomeSectionModel = getSection(HomeSectionType.CATEGORIES)
-
-    fun getIngredientsSection(): HomeSectionModel = getSection(HomeSectionType.INGREDIENTS)
+    private fun getIngredientsSection(): HomeSectionModel = getSection(HomeSectionType.INGREDIENTS)
 }

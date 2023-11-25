@@ -21,6 +21,10 @@ import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 import com.pereyrarg11.drinks.core.presentation.util.UiText
 
+private const val TOP_COLOR_STOP = 0f
+private const val MID_COLOR_STOP = 0.8f
+private const val BOTTOM_COLOR_STOP = 1f
+
 // TODO: use Displayable insteadof label and imageUrl
 @Composable
 fun HeroCard(
@@ -44,9 +48,9 @@ fun HeroCard(
                     .fillMaxSize()
                     .background(
                         Brush.verticalGradient(
-                            0f to Color.Transparent,
-                            0.8f to Color.Black.copy(alpha = 0.5f),
-                            1f to Color.Black.copy(alpha = 0.9f)
+                            TOP_COLOR_STOP to Color.Transparent,
+                            MID_COLOR_STOP to Color.Black.copy(alpha = 0.5f),
+                            BOTTOM_COLOR_STOP to Color.Black.copy(alpha = 0.9f)
                         )
                     )
             ) {
