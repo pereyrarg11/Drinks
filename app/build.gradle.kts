@@ -13,6 +13,8 @@ plugins {
     id("com.google.firebase.appdistribution")
     // Crashlytics Gradle plugin
     id("com.google.firebase.crashlytics")
+    // Detekt
+    id("io.gitlab.arturbosch.detekt")
 }
 
 android {
@@ -139,6 +141,13 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     // Crashlytics
     implementation("com.google.firebase:firebase-crashlytics")
+}
+
+detekt {
+    // TODO: set Detekt version as constant in buildSrc
+    toolVersion = "1.23.3"
+    config.setFrom(file("../config/detekt/detekt.yml"))
+    buildUponDefaultConfig = true
 }
 
 fun getSigningPropertiesByFlavorName(flavorName: String): Properties {

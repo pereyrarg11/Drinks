@@ -9,7 +9,7 @@ import com.pereyrarg11.drinks.core.data.util.Converter
 import com.pereyrarg11.drinks.core.data.util.MissingParamsException
 import com.pereyrarg11.drinks.core.domain.model.DrinkModel
 import com.pereyrarg11.drinks.core.domain.model.FilterType
-import com.pereyrarg11.drinks.core.domain.use_case.UnescapeTextUseCase
+import com.pereyrarg11.drinks.core.domain.usecase.UnescapeTextUseCase
 import com.pereyrarg11.drinks.core.domain.util.DataResult
 import com.pereyrarg11.drinks.core.presentation.BaseViewModel
 import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
