@@ -6,7 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
 import com.pereyrarg11.drinks.core.domain.util.DataResult
 import com.pereyrarg11.drinks.core.presentation.BaseViewModel
-import com.pereyrarg11.drinks.core.util.error.ErrorLogger
+import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
 import com.pereyrarg11.drinks.feature.home.analytics.HomeAnalyticsLogger
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 import com.pereyrarg11.drinks.feature.home.domain.repository.HomeRepository

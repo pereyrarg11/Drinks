@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.data.util.MissingParamsException
 import com.pereyrarg11.drinks.core.presentation.util.UiText
-import com.pereyrarg11.drinks.core.util.error.ErrorLogger
+import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
 
 abstract class BaseViewModel constructor(
     private val errorLogger: ErrorLogger,
