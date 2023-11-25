@@ -1,16 +1,13 @@
 package com.pereyrarg11.drinks.core.logger.debug
 
-import com.google.firebase.crashlytics.FirebaseCrashlytics
+import android.util.Log
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class CrashlyticsDebugLoggerFacade @Inject constructor(
-    private val firebaseCrashlytics: FirebaseCrashlytics,
-) : DebugLogger.Facade {
-
+class LogcatDebugLogger @Inject constructor() : DebugLogger.Facade {
     override fun logMessage(tag: String, message: String) {
-        firebaseCrashlytics.log("$tag: $message")
+        Log.d(tag, message)
     }
 
     override fun logMessage(tag: String, messageTemplate: () -> String) {
