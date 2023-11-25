@@ -16,6 +16,7 @@ import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
 import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants
 import com.pereyrarg11.drinks.core.presentation.util.UiText
 import com.pereyrarg11.drinks.core.util.error.ErrorLogger
+import com.pereyrarg11.drinks.feature.filter.analytics.FilterAnalyticsLogger
 import com.pereyrarg11.drinks.feature.filter.domain.repository.FilterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -28,20 +29,23 @@ class FilterViewModel @Inject constructor(
     private val repository: FilterRepository,
     private val drinkListConverter: Converter<List<DrinkModel>, List<DrinkDisplayable>>,
     val unescapeTextUseCase: UnescapeTextUseCase,
+    private val analyticsLogger: FilterAnalyticsLogger,
 ) : BaseViewModel(errorLogger) {
 
     var state by mutableStateOf(FilterState(isLoading = true))
 
     init {
-        val filterType = savedStateHandle.get<String>(NavConstants.FILTER_TYPE_PARAM)
-        val query = savedStateHandle.get<String>(NavConstants.QUERY_PARAM)
+        val filterTypeParam = savedStateHandle.get<String>(NavConstants.FILTER_TYPE_PARAM).orEmpty()
+        val queryParam = savedStateHandle.get<String>(NavConstants.QUERY_PARAM).orEmpty()
+        val filterType = FilterType.findByParam(filterTypeParam)
 
-        if (filterType != null && query != null) {
-            setTitleFromQueryParam(query)
-            fetchDrinksByFilterType(FilterType.findByParam(filterType), query)
+        if (filterTypeParam.isNotBlank() && queryParam.isNotBlank()) {
+            setTitleFromQueryParam(queryParam)
+            fetchDrinksByFilterType(filterType, queryParam)
         } else {
             handleError(MissingParamsException())
         }
+        analyticsLogger.enterToScreen(filterType.name, queryParam)
     }
 
     private fun setTitleFromQueryParam(query: String) {
@@ -85,6 +89,13 @@ class FilterViewModel @Inject constructor(
             isLoading = false,
             hasError = true,
             errorMessage = getErrorMessage(exception)
+        )
+    }
+
+    fun onClickDrink(drink: DrinkDisplayable) {
+        analyticsLogger.clickDrink(
+            drink.id,
+            drinkName = if (drink.label is UiText.PlainText) drink.label.value else ""
         )
     }
 }
