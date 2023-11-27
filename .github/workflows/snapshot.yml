@@ -1,0 +1,56 @@
+name: Snapshot
+
+on:
+  workflow_dispatch:
+    inputs:
+      BUILD_VARIANT:
+        description: 'Build variant'
+        required: true
+        default: 'Release'
+        type: choice
+        options:
+          - Debug
+          - Release
+      TESTER_GROUPS:
+        description: 'Groups for testing separated by a comma'
+        required: true
+        default: 'android-developers'
+        type: string
+      RELEASE_NOTES:
+        description: 'Describes the content of this version'
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: Generate snapshot
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get environment ready
+        uses: ./.github/actions/setup-env
+
+      - name: Decrypt repo
+        uses: sliteteam/github-action-git-crypt-unlock@1.2.0
+        with:
+          GIT_CRYPT_KEY: "${{ secrets.GIT_CRYPT_KEY }}"
+
+      - name: Build APK
+        uses: ./.github/actions/assemble-apk
+        with:
+          BUILD_VARIANT: "${{ inputs.BUILD_VARIANT }}"
+
+      - name: Upload artifact
+        uses: ./.github/actions/upload-apk
+        with:
+          PREFIX: 'snapshot'
+
+      - name: Distribute APK
+        uses: ./.github/actions/distribute-apk
+        with:
+          BUILD_VARIANT: "${{ inputs.BUILD_VARIANT }}"
+          TESTER_GROUPS: "${{ inputs.TESTER_GROUPS }}"
+          RELEASE_NOTES: "${{ inputs.RELEASE_NOTES }}"

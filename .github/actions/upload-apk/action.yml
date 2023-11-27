@@ -1,0 +1,24 @@
+name: Upload APK
+description: Creates an artifact with generated APK.
+inputs:
+  PREFIX:
+    description: Purpose for the build (e.g. release, snapshot, weekly)
+    required: false
+    default: snapshot
+
+runs:
+  using: "composite"
+  steps:
+    - name: Get current time
+      id: current_time
+      uses: josStorer/get-current-time@v2
+      with:
+        format: "YYYY-MM-DDTHH-mm"
+        utcOffset: "-06:00"
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: "${{ inputs.PREFIX }}_${{ steps.current_time.outputs.formattedTime }}"
+        path: "./app/build/outputs/apk/**/*.apk"
+        if-no-files-found: error
