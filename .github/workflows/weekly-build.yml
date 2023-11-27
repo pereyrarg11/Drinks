@@ -1,0 +1,38 @@
+name: Weekly build
+on:
+  schedule:
+    - cron: '00 14 * * 1'
+
+jobs:
+  weekly_build:
+    name: Build and distribute APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Get environment ready
+        uses: ./.github/actions/setup-env
+
+      - name: Decrypt repo
+        uses: sliteteam/github-action-git-crypt-unlock@1.2.0
+        with:
+          GIT_CRYPT_KEY: "${{ secrets.GIT_CRYPT_KEY }}"
+
+      - name: Build APK
+        uses: ./.github/actions/assemble-apk
+        with:
+          BUILD_VARIANT: "Release"
+
+      - name: Upload artifact
+        uses: ./.github/actions/upload-apk
+        with:
+          PREFIX: 'weekly'
+
+      - name: Distribute APK
+        uses: ./.github/actions/distribute-apk
+        with:
+          BUILD_VARIANT: 'Release'
+          TESTER_GROUPS: 'android-developers'
+          RELEASE_NOTES: 'Weekly build'
