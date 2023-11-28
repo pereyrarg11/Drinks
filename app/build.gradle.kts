@@ -18,6 +18,9 @@ plugins {
 }
 
 android {
+    buildFeatures {
+        buildConfig = true
+    }
     signingConfigs {
         getByName("debug") {
             val signingProperties = getSigningPropertiesByFlavorName(this.name)
@@ -57,6 +60,21 @@ android {
             serviceCredentialsFile = "secrets/google-service-account/drinks-55968-bdbeabcf946b.json"
             // groups, testers and releaseNotes SHOULD be added on gradle command execution
         }
+
+        val (apiKey, apiVersion) = try {
+            val apiProps = loadPropertiesFile("secrets/cocktail-api/api.properties")
+            // paid version values
+            arrayOf(
+                apiProps.getProperty("API_KEY"),
+                apiProps.getProperty("API_VERSION")
+            )
+        } catch (e: Exception) {
+            logger.error("${e.message}\nFree API values will be used instead!")
+            // free version values
+            arrayOf("1", "v1")
+        }
+        buildConfigField("String", "API_KEY", "\"$apiKey\"")
+        buildConfigField("String", "API_VERSION", "\"$apiVersion\"")
     }
 
     buildTypes {
@@ -151,8 +169,17 @@ detekt {
 }
 
 fun getSigningPropertiesByFlavorName(flavorName: String): Properties {
-    val signingPropertiesFile = rootProject.file("signing/$flavorName/signing.properties")
+    try {
+        return loadPropertiesFile("signing/$flavorName/signing.properties")
+    } catch (exception: Exception) {
+        throw Exception("Signing has not been configured for \"$flavorName\".\n${exception.message}")
+    }
+}
+
+@Throws(Exception::class)
+fun loadPropertiesFile(rootPath: String): Properties {
+    val propertiesFile = rootProject.file(rootPath)
     val properties = Properties()
-    properties.load(FileInputStream(signingPropertiesFile))
+    properties.load(FileInputStream(propertiesFile))
     return properties
 }
