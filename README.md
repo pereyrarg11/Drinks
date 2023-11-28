@@ -18,9 +18,11 @@
 
 ## About The Project
 
-The main goal of this app is to improve my development skills. The content is about drinks, so the data is taken from [TheCocktailDB](https://www.thecocktaildb.com/).
+The main goal of this app is to improve my development skills. The content is about drinks,
+so the data is taken from [TheCocktailDB](https://www.thecocktaildb.com/).
 
-- `HomeScreen` shows filters like Alcohol, Categories and Ingredients. _The content is static for now_.
+- `HomeScreen` shows filters like Alcohol, Categories and Ingredients.
+  _The content is static for now_.
   <p><img src="screenshots/home_screen.png" height="320"></img></p>
 
 - `FilterScreen` shows drinks filtered by alcohol content, ingredient or category.
@@ -28,7 +30,8 @@ The main goal of this app is to improve my development skills. The content is ab
 
 - `DrinkScreen` shows drink details like image, tags, ingredients and preparation steps.
 
-  When users click on any tag (Alcoholic and Category types) they are taken to the `FilterScreen` again to see the drinks filtered by this tag.
+  When users click on any tag (Alcoholic and Category types) they are taken to the `FilterScreen`
+  again to see the drinks filtered by this tag.
   <p><img src="screenshots/drink_screen.png" height="320"></img></p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -45,14 +48,19 @@ The main goal of this app is to improve my development skills. The content is ab
 
 ### Core dependencies
 
-- [Jetpack Compose](https://developer.android.com/jetpack/compose) a modern toolkit for building native UI
+- [Jetpack Compose](https://developer.android.com/jetpack/compose) a modern toolkit for building
+  native UI
 - [Dagger Hilt](https://dagger.dev/hilt/) for dependency injection
-- [Material Design 3](https://m3.material.io/develop/android/jetpack-compose) to met best practices of user interface design
-- [git-crypt](https://github.com/AGWA/git-crypt) to enable transparent encryption and decryption of files
+- [Material Design 3](https://m3.material.io/develop/android/jetpack-compose) to met best practices
+  of user interface design
+- [git-crypt](https://github.com/AGWA/git-crypt) to enable transparent encryption and decryption
+  of files
 - [Sandwich](https://github.com/skydoves/sandwich) for handling API responses and exceptions
 - [Retrofit](https://square.github.io/retrofit/) to configure an HTTP client
-- [Kotlin Flows](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/) for asynchronous data streams
-- [App Distribution](https://firebase.google.com/docs/app-distribution/android/distribute-gradle) to distribute app versions painless
+- [Kotlin Flows](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/)
+  for asynchronous data streams
+- [App Distribution](https://firebase.google.com/docs/app-distribution/android/distribute-gradle)
+  to distribute app versions painless
 
 <!-- GETTING STARTED -->
 
@@ -89,15 +97,20 @@ To get a local copy up and running follow these simple example steps.
 - [ ] Translate Drink instructions dynamically with [DeepL API](https://www.deepl.com/en/docs-api)
 - [ ] Social log-in through [Firebase Auth](https://firebase.google.com/docs/auth)
 
+See the [open issues](https://github.com/pereyrarg11/Drinks/issues) for a full list of proposed
+features (and known issues).
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire,
+and create. Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+If you have a suggestion that would make this better, please fork the repo and create a pull request.
+You can also simply open a [Feature request](https://github.com/pereyrarg11/Drinks/issues/new/choose).
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
@@ -112,7 +125,11 @@ Don't forget to give the project a star! Thanks again!
 
 ## Contact
 
-Gabriel Pereyra - [pereyrarg11](https://pereyrarg11.com/) - gabriel@pereyrarg11.com
+Gabriel Pereyra Roman
+
+- [LinkedIn](https://www.linkedin.com/in/pereyrarg11/)
+- [pereyrarg11.com](https://pereyrarg11.com/)
+- [gabriel@pereyrarg11.com](mailto:gabriel@pereyrarg11.com)
 
 Project Link: [https://github.com/pereyrarg11/Drinks](https://github.com/pereyrarg11/Drinks)
 
@@ -131,5 +148,7 @@ Resources I find helpful and would like to give credit to.
 - [JSONView](https://chromewebstore.google.com/detail/jsonview/gmegofmjomhknnokphhckolhcffdaihd)
 - [JSON Editor Online](https://jsoneditoronline.org/)
 - [Tinypng](https://tinypng.com/)
+- [Android API Levels](https://apilevels.com)
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
