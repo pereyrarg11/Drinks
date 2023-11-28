@@ -18,7 +18,7 @@ object RemoteModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("${ApiConstants.BASE_URL}/${ApiConstants.API_KEY}/")
+            .baseUrl("${ApiConstants.BASE_URL}/${ApiConstants.API_VERSION}/${ApiConstants.API_KEY}/")
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .client(OkHttpClient.Builder().build())
