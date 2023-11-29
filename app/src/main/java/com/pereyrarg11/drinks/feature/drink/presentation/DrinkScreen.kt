@@ -40,10 +40,16 @@ fun DrinkScreen(
                 drink = uiState.drink,
                 modifier = contentModifier
             ) { tag ->
+                viewModel.onClickTag(tag)
                 val filterType = when (tag.type) {
                     DrinkTagType.ALCOHOL -> FilterType.ALCOHOL
                     DrinkTagType.CATEGORY -> FilterType.CATEGORY
-                    DrinkTagType.UNKNOWN -> return@DrinkSuccessScreen
+                    DrinkTagType.UNKNOWN -> {
+                        viewModel.logException(
+                            Exception("DrinkTagType.UNKNOWN found when tag was clicked.")
+                        )
+                        return@DrinkSuccessScreen
+                    }
                 }
                 // navigate to FilterScreen
                 navController.navigate(

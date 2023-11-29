@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.core.domain.use_case
+package com.pereyrarg11.drinks.core.domain.usecase
 
 import javax.inject.Inject
 

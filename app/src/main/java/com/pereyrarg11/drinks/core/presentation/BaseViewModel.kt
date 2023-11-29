@@ -1,13 +1,14 @@
 package com.pereyrarg11.drinks.core.presentation
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.data.util.MissingParamsException
 import com.pereyrarg11.drinks.core.presentation.util.UiText
+import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
 
-abstract class BaseViewModel : ViewModel() {
-    private val tag = this.javaClass.simpleName
+abstract class BaseViewModel constructor(
+    private val errorLogger: ErrorLogger,
+) : ViewModel() {
 
     protected abstract fun handleError(exception: Exception?)
 
@@ -18,7 +19,7 @@ abstract class BaseViewModel : ViewModel() {
         }
     }
 
-    protected fun logException(exception: Exception) {
-        Log.e(tag, exception.message.orEmpty(), exception)
+    fun logException(exception: Exception) {
+        errorLogger.logException(exception)
     }
 }

@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 import com.pereyrarg11.drinks.core.presentation.util.UiText
-import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkTagType.*
+import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkTagType
 import com.pereyrarg11.drinks.feature.drink.presentation.model.TagUiItem
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -40,14 +40,14 @@ fun TagRow(
     ) {
         tags.forEach { tag ->
             val imageVector = when (tag.type) {
-                ALCOHOL -> Icons.Filled.Liquor
-                CATEGORY -> Icons.Filled.Tapas
-                UNKNOWN -> Icons.Filled.Widgets
+                DrinkTagType.ALCOHOL -> Icons.Filled.Liquor
+                DrinkTagType.CATEGORY -> Icons.Filled.Tapas
+                DrinkTagType.UNKNOWN -> Icons.Filled.Widgets
             }
             val color = when (tag.type) {
-                ALCOHOL -> MaterialTheme.colorScheme.primary
-                CATEGORY -> MaterialTheme.colorScheme.secondary
-                UNKNOWN -> MaterialTheme.colorScheme.onSurface
+                DrinkTagType.ALCOHOL -> MaterialTheme.colorScheme.primary
+                DrinkTagType.CATEGORY -> MaterialTheme.colorScheme.secondary
+                DrinkTagType.UNKNOWN -> MaterialTheme.colorScheme.onSurface
             }
 
             AssistChip(
@@ -76,21 +76,21 @@ fun TagRowPreview() {
             tags = listOf(
                 TagUiItem(
                     label = UiText.PlainText("Alcoholic"),
-                    type = ALCOHOL,
+                    type = DrinkTagType.ALCOHOL,
                 ),
                 TagUiItem(
                     label = UiText.PlainText("Cocktail"),
                 ),
                 TagUiItem(
                     label = UiText.PlainText("Shot"),
-                    type = CATEGORY,
+                    type = DrinkTagType.CATEGORY,
                 ),
                 TagUiItem(
                     label = UiText.PlainText("Other"),
                 ),
                 TagUiItem(
                     label = UiText.PlainText("Non alcoholic"),
-                    type = ALCOHOL,
+                    type = DrinkTagType.ALCOHOL,
                 ),
             )
         )

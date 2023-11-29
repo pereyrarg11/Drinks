@@ -1,0 +1,16 @@
+name: Get environment ready
+description: Setup Java and grant execute permission for gradlew.
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: oracle
+        cache: gradle
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      shell: bash

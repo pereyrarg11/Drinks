@@ -13,6 +13,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pereyrarg11.drinks.R
+import com.pereyrarg11.drinks.core.presentation.UiConstants
 import com.pereyrarg11.drinks.core.presentation.components.HeroCard
 import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
@@ -29,7 +30,7 @@ fun FilterSuccessScreen(
     val padding = dimensionResource(id = R.dimen.size_sm)
     val cardWidth =
         screenWidth - padding.times(2/*left and right*/) - padding.times(columns - 1 /*between columns*/)
-    val cardHeight = cardWidth / 4 * 3 // aspect ratio 3:4
+    val cardHeight = cardWidth / UiConstants.RATIO_4_TO_3
 
     LazyVerticalGrid(
         columns = GridCells.Fixed(columns),

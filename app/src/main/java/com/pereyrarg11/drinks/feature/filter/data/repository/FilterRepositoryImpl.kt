@@ -42,14 +42,20 @@ class FilterRepositoryImpl @Inject constructor(
                     emit(DataResult.Success(listConverter.convert(this.data)))
                 }
                 .suspendOnError {
-                    emit(DataResult.Error(exception = Exception("An error occurred when trying to fetch drinks by filter: $this")))
+                    emit(
+                        DataResult.Error(
+                            exception = Exception(
+                                "An error occurred when trying to fetch drinks by filter: $this"
+                            )
+                        )
+                    )
                 }
                 .suspendOnException {
                     // the API responds with an empty document when results were not found
                     if (throwable is EOFException) {
                         emit(DataResult.Success(emptyList()))
                     } else {
-                        emit(DataResult.Error(exception = Exception(throwable)))
+                        emit(DataResult.Error(exception = Exception(message, throwable)))
                     }
                 }
         }

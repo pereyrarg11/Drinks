@@ -1,8 +1,8 @@
 package com.pereyrarg11.drinks.feature.drink.presentation.converter
 
 import com.pereyrarg11.drinks.core.data.util.Converter
-import com.pereyrarg11.drinks.core.domain.use_case.EscapeTextUseCase
-import com.pereyrarg11.drinks.core.domain.use_case.RemoveLineBreaksUseCase
+import com.pereyrarg11.drinks.core.domain.usecase.EscapeTextUseCase
+import com.pereyrarg11.drinks.core.domain.usecase.RemoveLineBreaksUseCase
 import com.pereyrarg11.drinks.core.presentation.util.UiText
 import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkDetailModel
 import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkUiDetail

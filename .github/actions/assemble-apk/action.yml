@@ -1,0 +1,14 @@
+name: Build APK
+description: Assembles an APK for a build variant.
+inputs:
+  BUILD_VARIANT:
+    description: Build variant either Release or Debug
+    required: false
+    default: Release
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build with Gradle
+      run: ./gradlew assemble${{ inputs.BUILD_VARIANT }}
+      shell: bash

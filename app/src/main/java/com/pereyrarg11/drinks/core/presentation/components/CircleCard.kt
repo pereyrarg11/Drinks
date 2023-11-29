@@ -25,6 +25,8 @@ import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 import com.pereyrarg11.drinks.core.presentation.util.UiText
 
+private const val WIDTH_FACTOR = 1.3F
+
 @Composable
 fun CircleCard(
     label: UiText,
@@ -34,7 +36,7 @@ fun CircleCard(
     onClickListener: () -> Unit = {},
 ) {
     Column(
-        modifier = modifier.width(imageSize.times(1.3f)),
+        modifier = modifier.width(imageSize.times(WIDTH_FACTOR)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val strokeWidth = dimensionResource(id = R.dimen.circle_card_stroke_width)

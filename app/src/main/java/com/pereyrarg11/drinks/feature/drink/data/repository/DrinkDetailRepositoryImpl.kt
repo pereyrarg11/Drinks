@@ -40,7 +40,7 @@ class DrinkDetailRepositoryImpl @Inject constructor(
                     )
                 )
             }.suspendOnException {
-                emit(DataResult.Error(exception = Exception(throwable)))
+                emit(DataResult.Error(exception = Exception(message, throwable)))
             }
         }
     }

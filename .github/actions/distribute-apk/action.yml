@@ -1,0 +1,19 @@
+name: App distribution
+description: Uploads an APK of specific build variant to App Distribution console.
+inputs:
+  BUILD_VARIANT:
+    description: Release or Debug variant
+    required: true
+  TESTER_GROUPS:
+    description: Groups for testing, separated by a comma
+    required: true
+  RELEASE_NOTES:
+    description: Describes the content of this version
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: App distribution upload
+      run: ./gradlew appDistributionUpload${{ inputs.BUILD_VARIANT }} --groups="${{ inputs.TESTER_GROUPS }}" --releaseNotes="${{ inputs.RELEASE_NOTES }}"
+      shell: bash
