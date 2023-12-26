@@ -7,15 +7,16 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.pereyrarg11.drinks.core.data.util.Converter
 import com.pereyrarg11.drinks.core.data.util.MissingParamsException
+import com.pereyrarg11.drinks.core.di.EntitySummaryConverter
 import com.pereyrarg11.drinks.core.domain.model.DrinkModel
 import com.pereyrarg11.drinks.core.domain.model.FilterType
 import com.pereyrarg11.drinks.core.domain.usecase.UnescapeTextUseCase
 import com.pereyrarg11.drinks.core.domain.util.DataResult
+import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
 import com.pereyrarg11.drinks.core.presentation.BaseViewModel
 import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
 import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants
 import com.pereyrarg11.drinks.core.presentation.util.UiText
-import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
 import com.pereyrarg11.drinks.feature.filter.analytics.FilterAnalyticsLogger
 import com.pereyrarg11.drinks.feature.filter.domain.repository.FilterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,7 +28,7 @@ class FilterViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     errorLogger: ErrorLogger,
     private val repository: FilterRepository,
-    private val drinkListConverter: Converter<List<DrinkModel>, List<DrinkDisplayable>>,
+    @EntitySummaryConverter private val drinkListConverter: Converter<List<DrinkModel>, List<DrinkDisplayable>>,
     val unescapeTextUseCase: UnescapeTextUseCase,
     private val analyticsLogger: FilterAnalyticsLogger,
 ) : BaseViewModel(errorLogger) {
