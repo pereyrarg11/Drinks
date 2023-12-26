@@ -1,6 +1,7 @@
 package com.pereyrarg11.drinks.feature.filter.data.repository
 
-import com.pereyrarg11.drinks.core.data.remote.dto.DrinkListDto
+import com.pereyrarg11.drinks.core.data.remote.dto.DrinkDto
+import com.pereyrarg11.drinks.core.data.remote.dto.ResponseBodyDto
 import com.pereyrarg11.drinks.core.data.util.Converter
 import com.pereyrarg11.drinks.core.domain.model.DrinkModel
 import com.pereyrarg11.drinks.core.domain.util.DataResult
@@ -19,7 +20,7 @@ import javax.inject.Singleton
 @Singleton
 class FilterRepositoryImpl @Inject constructor(
     private val api: FilterApi,
-    private val listConverter: Converter<DrinkListDto, List<DrinkModel>>,
+    private val listConverter: Converter<ResponseBodyDto<DrinkDto>, List<DrinkModel>>,
 ) : FilterRepository {
     override suspend fun filterDrinksByAlcohol(query: String): Flow<DataResult<List<DrinkModel>>> {
         return handleApiResponse(api.filterDrinksByAlcohol(query))
@@ -33,7 +34,10 @@ class FilterRepositoryImpl @Inject constructor(
         return handleApiResponse(api.filterDrinksByIngredient(query))
     }
 
-    private suspend fun handleApiResponse(apiResponse: ApiResponse<DrinkListDto>): Flow<DataResult<List<DrinkModel>>> {
+    private suspend fun handleApiResponse(
+        apiResponse: ApiResponse<ResponseBodyDto<DrinkDto>>,
+    ): Flow<DataResult<List<DrinkModel>>> {
+
         return flow {
             emit(DataResult.Loading(isLoading = true))
 

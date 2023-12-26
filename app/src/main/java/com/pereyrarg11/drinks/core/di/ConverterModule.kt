@@ -3,7 +3,7 @@ package com.pereyrarg11.drinks.core.di
 import com.pereyrarg11.drinks.core.data.remote.converter.RemoteDrinkConverter
 import com.pereyrarg11.drinks.core.data.remote.converter.RemoteDrinkListConverter
 import com.pereyrarg11.drinks.core.data.remote.dto.DrinkDto
-import com.pereyrarg11.drinks.core.data.remote.dto.DrinkListDto
+import com.pereyrarg11.drinks.core.data.remote.dto.ResponseBodyDto
 import com.pereyrarg11.drinks.core.data.util.Converter
 import com.pereyrarg11.drinks.core.domain.model.DrinkModel
 import com.pereyrarg11.drinks.core.presentation.converter.UiDrinkConverter
@@ -18,6 +18,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class ConverterModule {
     @Binds
+    @ListItemConverter
     abstract fun bindRemoteDrinkConverter(
         converter: RemoteDrinkConverter,
     ): Converter<DrinkDto, DrinkModel>
@@ -25,7 +26,7 @@ abstract class ConverterModule {
     @Binds
     abstract fun bindRemoteDrinkListConverter(
         converter: RemoteDrinkListConverter,
-    ): Converter<DrinkListDto, List<DrinkModel>>
+    ): Converter<ResponseBodyDto<DrinkDto>, List<DrinkModel>>
 
     @Binds
     abstract fun bindUiDrinkConverter(
