@@ -4,8 +4,8 @@ import javax.inject.Qualifier
 
 @Qualifier
 @Retention(AnnotationRetention.RUNTIME)
-annotation class EntityConverter
+annotation class EntityDetailConverter
 
 @Qualifier
 @Retention(AnnotationRetention.RUNTIME)
-annotation class ListItemConverter
+annotation class EntitySummaryConverter

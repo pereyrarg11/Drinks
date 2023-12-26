@@ -1,6 +1,8 @@
 package com.pereyrarg11.drinks.core.di
 
 import com.pereyrarg11.drinks.core.data.remote.converter.RemoteDrinkConverter
+import com.pereyrarg11.drinks.core.data.remote.converter.RemoteDrinkDetailConverter
+import com.pereyrarg11.drinks.core.data.remote.converter.RemoteDrinkDetailListConverter
 import com.pereyrarg11.drinks.core.data.remote.converter.RemoteDrinkListConverter
 import com.pereyrarg11.drinks.core.data.remote.dto.DrinkDto
 import com.pereyrarg11.drinks.core.data.remote.dto.ResponseBodyDto
@@ -18,14 +20,27 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 abstract class ConverterModule {
     @Binds
-    @ListItemConverter
+    @EntitySummaryConverter
     abstract fun bindRemoteDrinkConverter(
         converter: RemoteDrinkConverter,
     ): Converter<DrinkDto, DrinkModel>
 
     @Binds
+    @EntitySummaryConverter
     abstract fun bindRemoteDrinkListConverter(
         converter: RemoteDrinkListConverter,
+    ): Converter<ResponseBodyDto<DrinkDto>, List<DrinkModel>>
+
+    @Binds
+    @EntityDetailConverter
+    abstract fun bindRemoteDrinkDetailConverter(
+        converter: RemoteDrinkDetailConverter,
+    ): Converter<DrinkDto, DrinkModel>
+
+    @Binds
+    @EntityDetailConverter
+    abstract fun bindRemoteDrinkDetailListConverter(
+        converter: RemoteDrinkDetailListConverter,
     ): Converter<ResponseBodyDto<DrinkDto>, List<DrinkModel>>
 
     @Binds
