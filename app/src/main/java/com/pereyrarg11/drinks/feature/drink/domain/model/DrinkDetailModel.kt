@@ -1,5 +1,7 @@
 package com.pereyrarg11.drinks.feature.drink.domain.model
 
+import com.pereyrarg11.drinks.core.domain.model.DrinkIngredientModel
+
 data class DrinkDetailModel(
     val id: String = "",
     val name: String = "",

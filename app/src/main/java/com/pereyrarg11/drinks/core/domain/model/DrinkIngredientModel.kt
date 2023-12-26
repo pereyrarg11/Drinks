@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.feature.drink.domain.model
+package com.pereyrarg11.drinks.core.domain.model
 
 data class DrinkIngredientModel(
     val name: String = "",

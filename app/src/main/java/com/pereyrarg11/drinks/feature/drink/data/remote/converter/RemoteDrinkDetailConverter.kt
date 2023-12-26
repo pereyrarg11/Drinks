@@ -1,11 +1,11 @@
 package com.pereyrarg11.drinks.feature.drink.data.remote.converter
 
+import com.pereyrarg11.drinks.core.data.remote.dto.DrinkIngredientDto
 import com.pereyrarg11.drinks.core.data.util.Converter
+import com.pereyrarg11.drinks.core.domain.model.DrinkIngredientModel
 import com.pereyrarg11.drinks.feature.drink.data.remote.dto.DrinkDetailDto
-import com.pereyrarg11.drinks.feature.drink.data.remote.dto.DrinkIngredientDto
 import com.pereyrarg11.drinks.feature.drink.data.remote.dto.DrinkMediaDto
 import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkDetailModel
-import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkIngredientModel
 import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkMediaModel
 import javax.inject.Inject
 import javax.inject.Singleton

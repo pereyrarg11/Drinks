@@ -1,8 +1,8 @@
-package com.pereyrarg11.drinks.feature.drink.data.remote.converter
+package com.pereyrarg11.drinks.core.data.remote.converter
 
+import com.pereyrarg11.drinks.core.data.remote.dto.DrinkIngredientDto
 import com.pereyrarg11.drinks.core.data.util.Converter
-import com.pereyrarg11.drinks.feature.drink.data.remote.dto.DrinkIngredientDto
-import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkIngredientModel
+import com.pereyrarg11.drinks.core.domain.model.DrinkIngredientModel
 import javax.inject.Inject
 import javax.inject.Singleton
 
