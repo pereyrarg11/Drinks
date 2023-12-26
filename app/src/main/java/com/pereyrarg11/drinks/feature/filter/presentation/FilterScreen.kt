@@ -17,7 +17,7 @@ fun FilterScreen(
     modifier: Modifier = Modifier,
     viewModel: FilterViewModel = hiltViewModel(),
 ) {
-    val state = viewModel.state
+    val state = viewModel.uiState
 
     MainScreen(
         modifier = modifier,

@@ -15,7 +15,7 @@ import com.pereyrarg11.drinks.core.domain.model.DrinkModel
 import com.pereyrarg11.drinks.core.presentation.converter.UiDrinkConverter
 import com.pereyrarg11.drinks.core.presentation.converter.UiDrinkDetailConverter
 import com.pereyrarg11.drinks.core.presentation.converter.UiDrinkListConverter
-import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
+import com.pereyrarg11.drinks.core.presentation.model.DrinkUiItem
 import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkUiDetail
 import dagger.Binds
 import dagger.Module
@@ -53,13 +53,13 @@ abstract class ConverterModule {
     @EntitySummaryConverter
     abstract fun bindUiDrinkConverter(
         converter: UiDrinkConverter,
-    ): Converter<DrinkModel, DrinkDisplayable>
+    ): Converter<DrinkModel, DrinkUiItem>
 
     @Binds
     @EntitySummaryConverter
     abstract fun bindUiDrinkListConverter(
         converter: UiDrinkListConverter,
-    ): Converter<List<DrinkModel>, List<DrinkDisplayable>>
+    ): Converter<List<DrinkModel>, List<DrinkUiItem>>
 
     @Binds
     @EntityDetailConverter

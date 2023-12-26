@@ -15,15 +15,15 @@ import androidx.compose.ui.unit.dp
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.UiConstants
 import com.pereyrarg11.drinks.core.presentation.components.HeroCard
-import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
+import com.pereyrarg11.drinks.core.presentation.model.DrinkUiItem
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 import com.pereyrarg11.drinks.core.presentation.util.StaticDisplayableProvider
 
 @Composable
 fun FilterSuccessScreen(
-    drinks: List<DrinkDisplayable>,
+    drinks: List<DrinkUiItem>,
     modifier: Modifier = Modifier,
-    onClickDrink: (DrinkDisplayable) -> Unit = {},
+    onClickDrink: (DrinkUiItem) -> Unit = {},
 ) {
     val columns = 2
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp

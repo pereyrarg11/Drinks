@@ -25,7 +25,6 @@ private const val TOP_COLOR_STOP = 0f
 private const val MID_COLOR_STOP = 0.8f
 private const val BOTTOM_COLOR_STOP = 1f
 
-// TODO: use Displayable insteadof label and imageUrl
 @Composable
 fun HeroCard(
     label: UiText,

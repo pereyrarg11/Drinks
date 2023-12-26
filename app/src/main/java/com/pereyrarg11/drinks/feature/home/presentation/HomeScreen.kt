@@ -18,7 +18,7 @@ fun HomeScreen(
     MainScreen(
         modifier = modifier,
     ) {
-        val state = viewModel.state
+        val state = viewModel.uiState
 
         when {
             state.hasError -> ErrorScreen(message = state.errorMessage)

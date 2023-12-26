@@ -14,7 +14,7 @@ import com.pereyrarg11.drinks.core.domain.usecase.UnescapeTextUseCase
 import com.pereyrarg11.drinks.core.domain.util.DataResult
 import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
 import com.pereyrarg11.drinks.core.presentation.BaseViewModel
-import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
+import com.pereyrarg11.drinks.core.presentation.model.DrinkUiItem
 import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants
 import com.pereyrarg11.drinks.core.presentation.util.UiText
 import com.pereyrarg11.drinks.feature.filter.analytics.FilterAnalyticsLogger
@@ -28,12 +28,12 @@ class FilterViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
     errorLogger: ErrorLogger,
     private val repository: FilterRepository,
-    @EntitySummaryConverter private val drinkListConverter: Converter<List<DrinkModel>, List<DrinkDisplayable>>,
+    @EntitySummaryConverter private val drinkListConverter: Converter<List<DrinkModel>, List<DrinkUiItem>>,
     val unescapeTextUseCase: UnescapeTextUseCase,
     private val analyticsLogger: FilterAnalyticsLogger,
 ) : BaseViewModel(errorLogger) {
 
-    var state by mutableStateOf(FilterState(isLoading = true))
+    var uiState by mutableStateOf(FilterUiState(isLoading = true))
 
     init {
         val filterTypeParam = savedStateHandle.get<String>(NavConstants.FILTER_TYPE_PARAM).orEmpty()
@@ -51,7 +51,7 @@ class FilterViewModel @Inject constructor(
 
     private fun setTitleFromQueryParam(query: String) {
         val title = unescapeTextUseCase(query)
-        state = state.copy(title = UiText.PlainText(title))
+        uiState = uiState.copy(title = UiText.PlainText(title))
     }
 
     private fun fetchDrinksByFilterType(filterType: FilterType, query: String) {
@@ -64,7 +64,7 @@ class FilterViewModel @Inject constructor(
             }.collect { result ->
                 when (result) {
                     is DataResult.Success -> {
-                        state = state.copy(
+                        uiState = uiState.copy(
                             isLoading = false,
                             hasError = false,
                             drinks = drinkListConverter.convert(result.data)
@@ -76,7 +76,7 @@ class FilterViewModel @Inject constructor(
                     }
 
                     is DataResult.Loading -> {
-                        state = state.copy(isLoading = result.isLoading, hasError = false)
+                        uiState = uiState.copy(isLoading = result.isLoading, hasError = false)
                     }
                 }
             }
@@ -86,14 +86,14 @@ class FilterViewModel @Inject constructor(
     override fun handleError(exception: Exception?) {
         if (exception != null) logException(exception)
 
-        state = state.copy(
+        uiState = uiState.copy(
             isLoading = false,
             hasError = true,
             errorMessage = getErrorMessage(exception)
         )
     }
 
-    fun onClickDrink(drink: DrinkDisplayable) {
+    fun onClickDrink(drink: DrinkUiItem) {
         analyticsLogger.clickDrink(
             drink.id,
             drinkName = if (drink.label is UiText.PlainText) drink.label.value else ""
