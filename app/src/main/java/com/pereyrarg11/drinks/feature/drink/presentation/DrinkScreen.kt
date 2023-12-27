@@ -11,7 +11,7 @@ import com.pereyrarg11.drinks.core.presentation.LoadingScreen
 import com.pereyrarg11.drinks.core.presentation.MainScreen
 import com.pereyrarg11.drinks.core.presentation.components.DetailAppBar
 import com.pereyrarg11.drinks.core.presentation.navigation.ScreenRoute
-import com.pereyrarg11.drinks.feature.drink.presentation.components.DrinkSuccessScreen
+import com.pereyrarg11.drinks.feature.drink.presentation.components.DrinkContent
 import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkTagType
 
 @Composable
@@ -36,7 +36,7 @@ fun DrinkScreen(
                 modifier = contentModifier
             )
 
-            !uiState.isLoading && !uiState.hasError -> DrinkSuccessScreen(
+            !uiState.isLoading && !uiState.hasError -> DrinkContent(
                 drink = uiState.drink,
                 modifier = contentModifier
             ) { tag ->
@@ -48,7 +48,7 @@ fun DrinkScreen(
                         viewModel.logException(
                             Exception("DrinkTagType.UNKNOWN found when tag was clicked.")
                         )
-                        return@DrinkSuccessScreen
+                        return@DrinkContent
                     }
                 }
                 // navigate to FilterScreen

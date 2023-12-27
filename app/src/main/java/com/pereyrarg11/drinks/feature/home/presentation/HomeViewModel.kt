@@ -10,6 +10,8 @@ import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
 import com.pereyrarg11.drinks.feature.home.analytics.HomeAnalyticsLogger
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 import com.pereyrarg11.drinks.feature.home.domain.repository.HomeRepository
+import com.pereyrarg11.drinks.feature.home.presentation.model.HomeEvent
+import com.pereyrarg11.drinks.feature.home.presentation.model.HomeUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,7 +23,7 @@ class HomeViewModel @Inject constructor(
     private val analyticsLogger: HomeAnalyticsLogger,
 ) : BaseViewModel(errorLogger) {
 
-    var state by mutableStateOf(HomeState())
+    var uiState by mutableStateOf(HomeUiState())
 
     init {
         analyticsLogger.enterScreen()
@@ -39,7 +41,7 @@ class HomeViewModel @Inject constructor(
             repository.fetchContent().collect { result ->
                 when (result) {
                     is DataResult.Success -> {
-                        state = state.copy(
+                        uiState = uiState.copy(
                             sections = result.data,
                             isLoading = false,
                             hasError = false
@@ -51,7 +53,7 @@ class HomeViewModel @Inject constructor(
                     }
 
                     is DataResult.Loading -> {
-                        state = state.copy(
+                        uiState = uiState.copy(
                             isLoading = result.isLoading,
                             hasError = false,
                         )
@@ -64,7 +66,7 @@ class HomeViewModel @Inject constructor(
     override fun handleError(exception: Exception?) {
         if (exception != null) logException(exception)
 
-        state = state.copy(
+        uiState = uiState.copy(
             isLoading = false,
             hasError = true,
             errorMessage = getErrorMessage(exception),

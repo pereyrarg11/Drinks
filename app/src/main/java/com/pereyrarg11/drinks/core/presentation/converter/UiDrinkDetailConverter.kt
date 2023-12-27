@@ -1,12 +1,12 @@
-package com.pereyrarg11.drinks.feature.drink.presentation.converter
+package com.pereyrarg11.drinks.core.presentation.converter
 
 import com.pereyrarg11.drinks.core.data.util.Converter
+import com.pereyrarg11.drinks.core.domain.model.DrinkModel
 import com.pereyrarg11.drinks.core.domain.usecase.EscapeTextUseCase
 import com.pereyrarg11.drinks.core.domain.usecase.RemoveLineBreaksUseCase
 import com.pereyrarg11.drinks.core.presentation.util.UiText
-import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkDetailModel
-import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkUiDetail
 import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkTagType
+import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkUiDetail
 import com.pereyrarg11.drinks.feature.drink.presentation.model.TagUiItem
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,12 +15,12 @@ import javax.inject.Singleton
 class UiDrinkDetailConverter @Inject constructor(
     val escapeText: EscapeTextUseCase,
     val removeLineBreaks: RemoveLineBreaksUseCase,
-) : Converter<DrinkDetailModel, DrinkUiDetail> {
+) : Converter<DrinkModel, DrinkUiDetail> {
 
-    override fun convert(input: DrinkDetailModel): DrinkUiDetail {
+    override fun convert(input: DrinkModel): DrinkUiDetail {
         return DrinkUiDetail(
             title = UiText.PlainText(input.name),
-            mediaUrl = input.media.thumbUrl,
+            mediaUrl = input.imageUrl,
             glassLabel = UiText.PlainText(input.glass),
             ingredients = input.ingredients.map { ingredient ->
                 UiText.PlainText(removeLineBreaks(ingredient.toString()))
@@ -34,7 +34,7 @@ class UiDrinkDetailConverter @Inject constructor(
      * This approach is temporary.
      * Implement a [Converter] if the data becomes bigger.
      */
-    private fun generateTags(input: DrinkDetailModel): List<TagUiItem> {
+    private fun generateTags(input: DrinkModel): List<TagUiItem> {
         return listOf(
             TagUiItem(
                 id = "1",

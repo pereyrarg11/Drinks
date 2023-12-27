@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.feature.filter.presentation
+package com.pereyrarg11.drinks.feature.filter.presentation.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,15 +15,15 @@ import androidx.compose.ui.unit.dp
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.UiConstants
 import com.pereyrarg11.drinks.core.presentation.components.HeroCard
-import com.pereyrarg11.drinks.core.presentation.model.DrinkDisplayable
+import com.pereyrarg11.drinks.core.presentation.model.DrinkUiItem
 import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 import com.pereyrarg11.drinks.core.presentation.util.StaticDisplayableProvider
 
 @Composable
-fun FilterSuccessScreen(
-    drinks: List<DrinkDisplayable>,
+fun FilterContent(
+    drinks: List<DrinkUiItem>,
     modifier: Modifier = Modifier,
-    onClickDrink: (DrinkDisplayable) -> Unit = {},
+    onClickDrink: (DrinkUiItem) -> Unit = {},
 ) {
     val columns = 2
     val screenWidth = LocalConfiguration.current.screenWidthDp.dp
@@ -53,9 +53,9 @@ fun FilterSuccessScreen(
 
 @Preview
 @Composable
-fun FilterSuccessScreenPreview() {
+fun FilterContentPreview() {
     DrinksTheme {
-        FilterSuccessScreen(
+        FilterContent(
             drinks = StaticDisplayableProvider.getDrinks()
         )
     }

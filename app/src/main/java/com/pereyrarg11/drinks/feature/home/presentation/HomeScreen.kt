@@ -8,6 +8,7 @@ import com.pereyrarg11.drinks.core.presentation.ErrorScreen
 import com.pereyrarg11.drinks.core.presentation.LoadingScreen
 import com.pereyrarg11.drinks.core.presentation.MainScreen
 import com.pereyrarg11.drinks.core.presentation.navigation.ScreenRoute
+import com.pereyrarg11.drinks.feature.home.presentation.components.HomeContent
 
 @Composable
 fun HomeScreen(
@@ -18,11 +19,11 @@ fun HomeScreen(
     MainScreen(
         modifier = modifier,
     ) {
-        val state = viewModel.state
+        val state = viewModel.uiState
 
         when {
             state.hasError -> ErrorScreen(message = state.errorMessage)
-            !state.isLoading && !state.hasError -> HomeSuccessScreen(
+            !state.isLoading && !state.hasError -> HomeContent(
                 sections = state.sections,
                 onClickFilter = { model ->
                     viewModel.onClickHomeFilter(model)

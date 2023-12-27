@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.feature.home.presentation
+package com.pereyrarg11.drinks.feature.home.presentation.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -16,12 +16,9 @@ import com.pereyrarg11.drinks.feature.home.data.repository.StaticHomeProvider
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionModel
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeSectionType
-import com.pereyrarg11.drinks.feature.home.presentation.components.CircleRow
-import com.pereyrarg11.drinks.feature.home.presentation.components.HeroRow
-import com.pereyrarg11.drinks.feature.home.presentation.components.HorizontalGrid
 
 @Composable
-fun HomeSuccessScreen(
+fun HomeContent(
     sections: List<HomeSectionModel>,
     modifier: Modifier = Modifier,
     onClickFilter: (HomeFilterModel) -> Unit = {},
@@ -65,8 +62,8 @@ fun HomeSuccessScreen(
 
 @Preview
 @Composable
-fun HomeSuccessScreenPreview() {
+fun HomeContentPreview() {
     DrinksTheme {
-        HomeSuccessScreen(sections = StaticHomeProvider.getAllSections())
+        HomeContent(sections = StaticHomeProvider.getAllSections())
     }
 }

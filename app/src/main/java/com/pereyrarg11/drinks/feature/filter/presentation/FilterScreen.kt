@@ -10,6 +10,7 @@ import com.pereyrarg11.drinks.core.presentation.MainScreen
 import com.pereyrarg11.drinks.core.presentation.NoResultsScreen
 import com.pereyrarg11.drinks.core.presentation.components.DetailAppBar
 import com.pereyrarg11.drinks.core.presentation.navigation.ScreenRoute
+import com.pereyrarg11.drinks.feature.filter.presentation.components.FilterContent
 
 @Composable
 fun FilterScreen(
@@ -17,7 +18,7 @@ fun FilterScreen(
     modifier: Modifier = Modifier,
     viewModel: FilterViewModel = hiltViewModel(),
 ) {
-    val state = viewModel.state
+    val state = viewModel.uiState
 
     MainScreen(
         modifier = modifier,
@@ -34,7 +35,7 @@ fun FilterScreen(
                 if (state.drinks.isEmpty()) {
                     NoResultsScreen()
                 } else {
-                    FilterSuccessScreen(
+                    FilterContent(
                         drinks = state.drinks,
                         modifier = contentModifier
                     ) { drink ->

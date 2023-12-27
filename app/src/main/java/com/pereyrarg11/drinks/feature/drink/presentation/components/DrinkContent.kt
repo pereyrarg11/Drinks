@@ -26,7 +26,7 @@ import com.pereyrarg11.drinks.feature.drink.presentation.model.DrinkTagType
 import com.pereyrarg11.drinks.feature.drink.presentation.model.TagUiItem
 
 @Composable
-fun DrinkSuccessScreen(
+fun DrinkContent(
     drink: DrinkUiDetail,
     modifier: Modifier = Modifier,
     onClickTag: (TagUiItem) -> Unit = {},
@@ -85,9 +85,9 @@ fun DrinkSuccessScreen(
 
 @Preview
 @Composable
-fun DrinkSuccessScreenPreview() {
+fun DrinkContentPreview() {
     DrinksTheme {
-        DrinkSuccessScreen(
+        DrinkContent(
             drink = DrinkUiDetail(
                 title = UiText.PlainText("Margarita"),
                 mediaUrl = "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",

@@ -1,35 +1,32 @@
-package com.pereyrarg11.drinks.feature.drink.data.remote.converter
+package com.pereyrarg11.drinks.core.data.remote.converter
 
+import com.pereyrarg11.drinks.core.data.remote.dto.DrinkDto
+import com.pereyrarg11.drinks.core.data.remote.dto.DrinkIngredientDto
 import com.pereyrarg11.drinks.core.data.util.Converter
-import com.pereyrarg11.drinks.feature.drink.data.remote.dto.DrinkDetailDto
-import com.pereyrarg11.drinks.feature.drink.data.remote.dto.DrinkIngredientDto
-import com.pereyrarg11.drinks.feature.drink.data.remote.dto.DrinkMediaDto
-import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkDetailModel
-import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkIngredientModel
-import com.pereyrarg11.drinks.feature.drink.domain.model.DrinkMediaModel
+import com.pereyrarg11.drinks.core.domain.model.DrinkIngredientModel
+import com.pereyrarg11.drinks.core.domain.model.DrinkModel
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class RemoteDrinkDetailConverter @Inject constructor(
     private val ingredientsConverter: Converter<List<DrinkIngredientDto>, List<DrinkIngredientModel>>,
-    private val mediaConverter: Converter<DrinkMediaDto, DrinkMediaModel>,
-) : Converter<DrinkDetailDto, DrinkDetailModel> {
+) : Converter<DrinkDto, DrinkModel> {
 
-    override fun convert(input: DrinkDetailDto): DrinkDetailModel {
-        return DrinkDetailModel(
+    override fun convert(input: DrinkDto): DrinkModel {
+        return DrinkModel(
             id = input.idDrink.orEmpty(),
             name = input.strDrink.orEmpty(),
+            imageUrl = input.strDrinkThumb.orEmpty(),
             category = input.strCategory.orEmpty(),
             alcoholContent = input.strAlcoholic.orEmpty(),
             glass = input.strGlass.orEmpty(),
             ingredients = convertIngredients(input),
-            media = convertMedia(input),
             instructions = input.strInstructions.orEmpty(),
         )
     }
 
-    private fun convertIngredients(input: DrinkDetailDto): List<DrinkIngredientModel> {
+    private fun convertIngredients(input: DrinkDto): List<DrinkIngredientModel> {
         val ingredientsDto = listOf(
             DrinkIngredientDto(input.strIngredient1, input.strMeasure1),
             DrinkIngredientDto(input.strIngredient2, input.strMeasure2),
@@ -49,16 +46,5 @@ class RemoteDrinkDetailConverter @Inject constructor(
         )
 
         return ingredientsConverter.convert(ingredientsDto)
-    }
-
-    private fun convertMedia(input: DrinkDetailDto): DrinkMediaModel {
-        val drinkMediaDto = DrinkMediaDto(
-            strDrinkThumb = input.strDrinkThumb,
-            strVideo = input.strVideo,
-            strImageSource = input.strImageSource,
-            strImageAttribution = input.strImageAttribution,
-        )
-
-        return mediaConverter.convert(drinkMediaDto)
     }
 }
