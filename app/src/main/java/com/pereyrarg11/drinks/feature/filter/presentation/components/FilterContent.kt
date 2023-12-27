@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.feature.filter.presentation
+package com.pereyrarg11.drinks.feature.filter.presentation.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
@@ -20,7 +20,7 @@ import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 import com.pereyrarg11.drinks.core.presentation.util.StaticDisplayableProvider
 
 @Composable
-fun FilterSuccessScreen(
+fun FilterContent(
     drinks: List<DrinkUiItem>,
     modifier: Modifier = Modifier,
     onClickDrink: (DrinkUiItem) -> Unit = {},
@@ -53,9 +53,9 @@ fun FilterSuccessScreen(
 
 @Preview
 @Composable
-fun FilterSuccessScreenPreview() {
+fun FilterContentPreview() {
     DrinksTheme {
-        FilterSuccessScreen(
+        FilterContent(
             drinks = StaticDisplayableProvider.getDrinks()
         )
     }

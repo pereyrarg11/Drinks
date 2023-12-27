@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.feature.filter.presentation
+package com.pereyrarg11.drinks.feature.filter.presentation.model
 
 import com.pereyrarg11.drinks.R
 import com.pereyrarg11.drinks.core.presentation.model.DrinkUiItem

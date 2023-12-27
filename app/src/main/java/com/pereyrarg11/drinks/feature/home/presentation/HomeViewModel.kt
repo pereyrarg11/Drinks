@@ -10,6 +10,8 @@ import com.pereyrarg11.drinks.core.logger.error.ErrorLogger
 import com.pereyrarg11.drinks.feature.home.analytics.HomeAnalyticsLogger
 import com.pereyrarg11.drinks.feature.home.domain.model.HomeFilterModel
 import com.pereyrarg11.drinks.feature.home.domain.repository.HomeRepository
+import com.pereyrarg11.drinks.feature.home.presentation.model.HomeEvent
+import com.pereyrarg11.drinks.feature.home.presentation.model.HomeUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

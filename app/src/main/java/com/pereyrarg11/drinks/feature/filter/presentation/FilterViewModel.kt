@@ -19,6 +19,7 @@ import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants
 import com.pereyrarg11.drinks.core.presentation.util.UiText
 import com.pereyrarg11.drinks.feature.filter.analytics.FilterAnalyticsLogger
 import com.pereyrarg11.drinks.feature.filter.domain.repository.FilterRepository
+import com.pereyrarg11.drinks.feature.filter.presentation.model.FilterUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.pereyrarg11.drinks.feature.home.presentation
+package com.pereyrarg11.drinks.feature.home.presentation.model
 
 import com.pereyrarg11.drinks.core.presentation.model.UiState
 import com.pereyrarg11.drinks.core.presentation.util.UiText
