@@ -1,2 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <color name="apricot_sour">#FFB84C</color>
+    <color name="dragon_fruit">#F266AB</color>
+    <color name="lean">#A459D1</color>
+    <color name="grasshopper">#2CD3E1</color>
+</resources>
