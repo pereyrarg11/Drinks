@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">@color/apricot_sour</color>
+    <color name="secondary">@color/dragon_fruit</color>
+    <color name="tertiary">@color/grasshopper</color>
+    <color name="surfaceVariant">@color/dragon_fruit</color>
+</resources>

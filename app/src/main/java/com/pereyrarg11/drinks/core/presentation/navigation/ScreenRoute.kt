@@ -5,6 +5,9 @@ import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants.ID_PARAM
 import com.pereyrarg11.drinks.core.presentation.navigation.NavConstants.QUERY_PARAM
 
 sealed class ScreenRoute(val route: String) {
+
+    object Splash : ScreenRoute("splash")
+
     object Home : ScreenRoute("home")
 
     object Filter :
