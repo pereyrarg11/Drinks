@@ -24,11 +24,11 @@ class SplashViewModel @Inject constructor(
     }
 
     override fun handleError(exception: Exception?) {
+        /*nothing to do*/
     }
 
     private fun onNext() {
         viewModelScope.launch {
-            delay(500)
             _navEvent.send(SplashUiEvent.NavigateToHome)
         }
     }
