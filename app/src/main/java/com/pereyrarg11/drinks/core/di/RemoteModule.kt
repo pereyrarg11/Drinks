@@ -1,6 +1,7 @@
 package com.pereyrarg11.drinks.core.di
 
 import com.pereyrarg11.drinks.core.data.remote.ApiConstants
+import com.pereyrarg11.drinks.core.data.remote.DrinkApi
 import com.skydoves.sandwich.retrofit.adapters.ApiResponseCallAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -23,5 +24,11 @@ object RemoteModule {
             .addCallAdapterFactory(ApiResponseCallAdapterFactory.create())
             .client(OkHttpClient.Builder().build())
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDrinkApi(retrofit: Retrofit): DrinkApi {
+        return retrofit.create(DrinkApi::class.java)
     }
 }
