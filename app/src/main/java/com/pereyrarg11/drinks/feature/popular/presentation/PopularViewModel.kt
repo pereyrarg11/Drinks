@@ -60,6 +60,13 @@ class PopularViewModel @Inject constructor(
         }
     }
 
+    fun onDisplayDrink(drink: DrinkUiItem) {
+        analyticsLogger.displayDrink(
+            drinkId = drink.id,
+            drinkName = if (drink.label is UiText.PlainText) drink.label.value else ""
+        )
+    }
+
     private fun fetchPopularDrinks() {
         viewModelScope.launch {
             repository.getPopularDrinks().collect { result ->

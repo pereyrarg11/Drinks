@@ -19,4 +19,6 @@ sealed class ScreenRoute(val route: String) {
     object Drink : ScreenRoute("drink/{$ID_PARAM}") {
         fun createRoute(id: String) = "drink/$id"
     }
+
+    object Popular : ScreenRoute("popular")
 }

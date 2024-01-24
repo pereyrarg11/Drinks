@@ -17,6 +17,7 @@ import com.pereyrarg11.drinks.core.presentation.theme.DrinksTheme
 import com.pereyrarg11.drinks.feature.drink.presentation.DrinkScreen
 import com.pereyrarg11.drinks.feature.filter.presentation.FilterScreen
 import com.pereyrarg11.drinks.feature.home.presentation.HomeScreen
+import com.pereyrarg11.drinks.feature.popular.presentation.PopularScreen
 import com.pereyrarg11.drinks.feature.splash.presentation.SplashScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -62,6 +63,9 @@ fun DrinksAppContent(
                 }
                 composable(ScreenRoute.Drink.route) {
                     DrinkScreen(navController = navController)
+                }
+                composable(ScreenRoute.Popular.route) {
+                    PopularScreen(onNavigate = { navController.navigate(it) })
                 }
             }
         }
